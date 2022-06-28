@@ -1,0 +1,99 @@
+.rating1 {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.8em;
+    margin-top: -0.4em;
+  }
+  
+  .rating1 label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .rating1 label:last-child {
+    position: static;
+  }
+  
+  .rating1 label:nth-child(1) {
+    z-index: 5;
+  }
+  
+  .rating1 label:nth-child(2) {
+    z-index: 4;
+  }
+  
+  .rating1 label:nth-child(3) {
+    z-index: 3;
+  }
+  
+  .rating1 label:nth-child(4) {
+    z-index: 2;
+  }
+  
+  .rating1 label:nth-child(5) {
+    z-index: 1;
+  }
+  
+  .rating1 label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .rating1 label .icon {
+    float: left;
+    color: transparent;
+  }
+  
+  .rating1 label:last-child .icon {
+    color: #ccc;
+  }
+  
+  .rating1:not(:hover) label input:checked ~ .icon,
+  .rating1:hover label:hover input ~ .icon {
+      
+    color: #f8990b;
+  }
+  
+  .rating1 label input:focus:not(:checked) ~ .icon:last-child {
+    
+    color: #f8990b;
+    text-shadow: 0 0 5px #f8990b;
+  }
+
+  .stars-outer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+  }
+  
+  .stars-outer::before {
+    content: "\★ \★ \★ \★ \★";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #ccc;
+    
+  }
+  
+  .stars-inner::before {
+    content: "\★ \★ \★ \★ \★";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f8ce0b;
+  }
+  
+  

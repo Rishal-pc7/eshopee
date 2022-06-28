@@ -1,0 +1,268 @@
+
+
+<link rel="stylesheet" href="/font/fontawesome/css/all.css">
+
+
+    <link rel="stylesheet" href="/css/bootstrap(elc).min.css">
+
+    <link rel="stylesheet" href="/css/layouts(elc).css">
+
+    <link rel="stylesheet" href="/css/style(elc).css">
+
+    <link rel="stylesheet" href="/css/responsive(elc).css">
+     <link rel="stylesheet" href="/css/default(elc).css">
+     <link rel="stylesheet" href="/css/avatar.css">
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ <section>
+                <div class="checkout-sec my-5">
+                    <div class="container">
+                        <form id="checkOutForm" method="post" enctype="multipart/form-data" >
+                            <div class="row">
+                                <div class="col-md-8 my-3">
+                                    <div class="checkout-form">
+                                        <h2 class="form-title">
+                                            Billing Details
+                                        </h2>
+
+                                        <div class="billing-form">
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6 my-2">
+                                                    <label class="rq-label" for="first_name">First Name</label>
+                                                    <input type="text" name="fname" id="first_name" class="form-control" required>
+                                                </div>
+                                                <div class="col-md-6 my-2">
+                                                    <label class="rq-label" for="last_name">Last Name</label>
+                                                    <input type="text" name="sname" id="last_name" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <label class="rq-label" for="country">Country</label>
+                                                    <input type="text" name="country" id="country" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <label class="rq-label" for="address">Address</label>
+                                                    <input type="text" name="address" id="address" class="form-control" required placeholder="Street Address">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" name="housenum" class="form-control" id="housenum" placeholder="Apartment, House number (optional)">
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <label class="rq-label" for="town">Town/City</label>
+                                                    <input type="text" name="town/city" id="town" class="form-control" required> 
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <label class="rq-label" for="state">State</label>
+                                                    <input type="text" name="state" id="state" class="form-control" required>
+                                               </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <label class="rq-label" for="postcode">Postcode / ZIP</label>
+                                                    <input type="text" name="pincode" id="postcode" class="form-control "required>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6 my-2">
+                                                    <label class="rq-label" for="phone">Phone</label>
+                                                    <input type="text" name="mobile" id="phone" class="form-control" required>
+                                              </div>
+                                                <div class="col-md-6 my-2">
+                                                    <label class="rq-label" for="email">Email</label>
+                                                    <input type="text" name="email" id="email" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 my-3">
+                                    <div class="order-payment-info-sec">
+                                        <h3>Your Order</h3>
+
+                                        <div class="product-info-table">
+                                            <div class="table-responsive">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        
+                                                        <tr>
+                                                            <th scope="col">Products</th>
+                                                            <th scope="col">Total</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody class="checkout-table-qu">
+                                                        {{#each products}}
+                                                        <tr>
+                                                            <td>{{this.product.name}} - {{this.product.color}} <span class="quantity">x{{this.quantity}}</span></td>
+                                                            <td class="price-ck">₹{{#priceComma this.product.price}}{{/priceComma}}</td>
+                                                        </tr>
+                                                        {{/each}}
+                                                        
+                                                        <tr>
+                                                            <th scope="col" class="total-t">Subtotal</th>
+                                                            <th scope="col" class="price-ck">{{#if total}}₹{{#priceComma total}}{{/priceComma}}{{/if}}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col" class="total-t">Total</th>
+                                                            <th scope="col" class="price-ck">{{#if total}}₹{{#priceComma total}}{{/priceComma}}{{/if}}</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment_method" checked  value="COD" id="bank">
+                                          <label class="form-check-label" for="bank">Cash on Delivery</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="payment_method"  value="online_payment"  requiredd="cheque">
+                                                <label class="form-check-label" for="cheque">Online Payment </label>
+                                            </div>
+                                           
+                                              <input type="text" name="userId" value={{user._id}} hidden>
+                                              {{#if_eq query 'id' }}
+                                              <input type="text" name="id" value={{queryId}} hidden>
+                                              {{else}}
+                                              {{#if_eq query 'cart' }}
+                                              <input type="text" name="cart" value=true hidden>
+                                              {{/if_eq}}
+                                              {{/if_eq}}
+                                              {{#if products}}
+
+                                        <div class="checkout-submit mt-4">
+                                                <button class="custom-btn" type="submit">PLACE ORDER</button>
+                                            </div>
+                                            {{/if}}
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+<script>
+    $("#checkOutForm").submit((e)=>{
+        let housenum=document.getElementById('housenum').value
+        console.log("🚀 ~ file: checkout.hbs ~ line 335 ~ $ ~ housenum", housenum)
+        if(housenum == null){
+            housenum==null
+
+        }else{
+            housenum.value=housenum
+        }
+        e.preventDefault()
+        $.ajax({
+            url:'/checkout',
+            data:$('#checkOutForm').serialize(),
+            method:'post',
+            success:(response)=>{
+                
+                if(response.cod_success){
+                    location.href='/orderPlaced'
+
+                }else{
+                    razorpayPayment(response)
+                    
+
+                }
+                
+                
+
+            }
+        })
+    })
+
+   function razorpayPayment(order){
+       
+       var options = {   
+         "key": "rzp_test_KW9K3y7TfKJ04E", 
+         "amount": order.amount, 
+         "currency": "INR",   
+         "name": "Rishal",    
+         "description": "Test Transaction",   
+         "image": "https://example.com/your_logo",
+         "order_id":order.id, 
+         "handler": function (response)
+            {  
+              alert(response.razorpay_payment_id);     
+              alert(response.razorpay_order_id);      
+              alert(response.razorpay_signature)  
+              verifyPayment(response,order)  
+            },  
+          "prefill":
+                    { 
+                     "name": "Gaurav Kumar",
+                      "email": "gaurav.kumar@example.com",
+                      "contact": "9999999999"    
+                    },    
+            "notes":{
+                       "address": "Razorpay Corporate Office"    
+                    },    
+                        "theme": {
+                                  "color": "#3399cc"   
+                                 }
+            };
+
+                             var rzp1 = new Razorpay(options);
+                             rzp1.on('payment.failed', function (response){        
+                                 alert(response.error.code);        
+                                 alert(response.error.description);        
+                                 alert(response.error.source);        
+                                 alert(response.error.step);        
+                                 alert(response.error.reason);        
+                                 alert(response.error.metadata.order_id);        
+                                 alert(response.error.metadata.payment_id);
+                                 });
+                                 rzp1.open()
+                  
+
+    }
+
+    function verifyPayment(payment,order){
+
+        $.ajax({
+            url:'/verifyPayment',
+            data:{
+                payment,
+                order
+            },
+            method:'post',
+            success:(response)=>{
+                if(response.status){
+                    location.href   ='/orderPlaced'  
+                }else{
+                alert(errMsg)
+            }
+            }
+        })
+
+    }
+</script>
+   
+  
+
+ <script src="/js/jquery.min.js"></script>
+    <!-- ===========bootstrap========= -->
+    <script src="/js/bootstrap.bundle.min(elc).js"></script>
+    <!-- ===========owl carousel========= -->
+
+<script src="/js/custom.js"></script>

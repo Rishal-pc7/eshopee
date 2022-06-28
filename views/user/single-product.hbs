@@ -1,0 +1,809 @@
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+
+<link rel="stylesheet" href="/css/rating-star.css">
+
+
+<link rel="stylesheet" href="/css/slick.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/responsive.css">
+
+<link rel="stylesheet" href="/css/wishlist-responsive.css">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="shop-details-area pt-100 pb-70">
+<div class="container">
+<div class="shop-details-desc">
+<div class="row">
+<div class="col-lg-6">
+<div class="shop-details-image">
+<ul class="shop-details-image-slides">
+<li><img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" alt="Images"></li>
+<li><img src="/product-images/{{product._id}}/sideImage{{product._id}}.jpg" alt="Images"></li>
+<li><img src="/product-images/{{product._id}}/backImage{{product._id}}.jpg" alt="Images"></li>
+
+</ul>
+<div class="slick-thumbs">
+<ul class="shop-details-image-slides">
+<li><img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" alt="Images"></li>
+<li><img src="/product-images/{{product._id}}/sideImage{{product._id}}.jpg" alt="Images"></li>
+<li><img src="/product-images/{{product._id}}/backImage{{product._id}}.jpg" alt="Images"></li>
+
+</ul>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="shop-desc-content">
+<span>{{product.category}}</span>
+ <h3>{{product.name}}-{{product.color}}</h3>
+<div class="shop-desc-list">
+<div class="shop-desc-review">
+<div class="rating "> <div class="stars-outer"><div id="mainRating" class="stars-inner"></div></div> </div>
+<a href="#" class="rating-count">{{#if rating}}{{rating.length}}{{else}}0{{/if}} Ratings</a>
+</div>
+<div class="shop-desc-share-list">
+<ul>
+
+<li><button id="wishlistButton" onclick="addToWishlist('{{product._id}}')"  style="border: none;background-color: #fff;"><i style="color: #ccc;font-size: 1.2em;" id="wishlistIcon"  class="las la-heart"></i> Wishlist</button></li>
+
+</ul>
+</div>
+</div>
+<div class="brand-name">
+<span class="brand-text">Brand : <b>{{product.brand}}</b></span>
+<span class="brand-text">Color : <b>{{product.color}}</b></span>
+</div>
+<ul class="shop-desc-content-list">
+
+<li>{{product.aboutPoint1}}</li>
+
+<li>{{product.aboutPoint2}}</li>
+<li>{{product.aboutPoint3}}</li>
+<li>{{product.aboutPoint4}}</li>
+<li>{{product.aboutPoint5}}</li>
+</ul>
+<h4>
+{{#if product.initialPrice}}
+												 <del  style="color:#505458;" >₹{{#priceComma product.initialPrice}}{{/priceComma}}</del>
+												{{/if}}
+ ₹{{#priceComma product.price}}{{/priceComma}}</h4>
+
+<div class="shop-add-btn ">
+<a  href="/checkout?id={{product._id}}" style="margin-bottom: -1.4em;" class="default-btn default-bg-color border-radius-5">
+Buy Now!
+</a>
+<button type="submit" onclick="addToCart('{{product._id}}')" class="default-btn border-radius-5">
+Add To Cart
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="product-tab pb-70">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<div class="tab products-details-tab">
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<ul class="tabs">
+<li>
+<a href="#">
+Description
+</a>
+</li>
+<li>
+<a href="#">
+Specifications
+</a>
+</li>
+<li>
+<a href="#">
+Reviews
+</a>
+</li>
+</ul>
+</div>
+<div class="col-lg-12 col-md-12">
+<div class="row">
+<div class="tab_content current active pt-45">
+<div class="tabs_item current">
+<div class="products-tabs-decs">
+<h3>{{product.name}}</h3>
+
+<p>
+{{product.description}}
+</p>
+<div class="products-tabs-main-img">
+<img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" alt="Images">
+</div>
+
+<div class="product-tab-bottom">
+<h3 class="tittle">
+Home > Shop > {{product.category}} > {{product.name}}-{{product.color}} 
+</h3>
+<span>Category : <b>{{product.category}}</b> </span>
+<span>Brand : <b>{{product.brand}}</b> </span>
+<span>Warranty Policy :<b>{{#if product.warranty}}{{product.warranty}}{{else}}_{{/if}}</b> </span>
+
+</div>
+</div>
+</div>
+<div class="tabs_item">
+<div class="products-tabs-specifications">
+<h2>{{product.name}} full Specification</h2>
+{{#each specifications}}
+<div class="tabs-specifications-content-2">
+<h3>{{this.name}} : <span>{{this.value}}</span></h3>
+
+</div>
+{{/each}}
+
+</div>
+</div>
+<div class="tabs_item">
+<div class="tab-reviews">
+<div class="row align-items-center">
+<div class="col-lg-3">
+<div class="products-reviews-content">
+<span>Based on {{#if rating}}{{rating.length}}{{else}}0{{/if}} Reviews</span>
+<h3>{{rating.rating}}</h3>
+<div class="rating "> <div class="stars-outer"><div id="reviewRating" class="stars-inner"></div></div> </div>
+<p>{{#if rating}}{{rating.length}}{{else}}0{{/if}} Ratings</p>
+</div>
+</div>
+<div class="col-lg-9 rating-numbers">
+<div class="products-reviews">
+<div class="row">
+<div class="side side-left">
+<div>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+</div>
+</div>
+<div class="middle">
+<div class="bar-container">
+<div class="bar-5"></div>
+</div>
+</div>
+<div class="side right">
+<div>  {{#if rating}}
+  [{{rating.fiveStarRating}}]
+  {{else}}
+  [0]
+  {{/if}}</div>
+</div>
+<div class="side side-left">
+<div>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="lar la-star"></i>
+</div>
+</div>
+<div class="middle">
+<div class="bar-container">
+<div class="bar-4"></div>
+</div>
+ </div>
+<div class="side right">
+<div>  {{#if rating}}
+  [{{rating.fourStarRating}}]
+  {{else}}
+  [0]
+  {{/if}}</div>
+</div>
+<div class="side side-left">
+<div>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="lar la-star"></i>
+<i class="lar la-star"></i>
+</div>
+</div>
+<div class="middle">
+<div class="bar-container">
+<div class="bar-3"></div>
+</div>
+</div>
+<div class="side right">
+<div>
+  {{#if rating}}
+  [{{rating.threeStarRating}}]
+  {{else}}
+  [0]
+  {{/if}}
+  </div>
+</div>
+<div class="side side-left">
+<div>
+<i class="las la-star"></i>
+<i class="las la-star"></i>
+<i class="lar la-star"></i>
+<i class="lar la-star"></i>
+<i class="lar la-star"></i>
+</div>
+</div>
+<div class="middle">
+<div class="bar-container">
+<div class="bar-2"></div>
+</div>
+</div>
+<div class="side right">
+<div>  {{#if rating}}
+  [{{rating.twoStarRating}}]
+  {{else}}
+  [0]
+  {{/if}}</div>
+</div>
+<div class="side side-left">
+<div>
+<i class="las la-star"></i>
+<i class="lar la-star"></i>
+<i class="lar la-star"></i>
+<i class="lar la-star"></i>
+<i class="lar la-star"></i>
+</div>
+</div>
+<div class="middle">
+<div class="bar-container">
+<div class="bar-1"></div>
+</div>
+</div>
+<div class="side right">
+<div>  {{#if rating}}
+  [{{rating.oneStarRating}}]
+  {{else}}
+  [0]
+  {{/if}}</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="customer-review">
+<h2>{{#if rating}}{{rating.length}}{{else}}0{{/if}} Reviews</h2>
+{{#each reviewDetails}}
+<div class="customer-review-item">
+<h3>{{this.userName}}</h3>
+<span style="margin-left: 1em;">on {{this.date}} at {{this.time}}
+  
+<a id="{{this.userId}}" class="userReviewEdit"  href="#reviewEditForm"><i style="font-size: 2rem !important;" class="las la-edit"></i></a>
+
+</span>
+<div class="rating "> <div class="stars-outer"><div id="{{this.time}}" class="stars-inner"></div></div> </div>
+
+<p>
+{{this.review}}
+</p>
+</div>
+{{/each}}
+
+
+<div class="reviews-form">
+<div class="contact-form">
+
+{{#if user}}
+
+
+
+{{#if userReview}}
+<h3>Edit Your Review</h3>
+<form id="reviewEditForm" action="/editReview" method="post"  >
+
+<div class="row">
+    <div class="col-md-3">
+        <h4>Your Rating</h4>
+    </div><div class="col-md-6">
+      <div class="row">
+        <div class="col-md-5">
+        <div class="rating1" id="ratedStars">
+    {{#if_eq userReview.reviewDetails.ratedStars 1}}
+    <label>
+        
+    <input type="radio" checked name="stars" value="1" />
+    <span class="icon">★</span>
+  </label>
+  {{else}}
+  {{#if_eq userReview.reviewDetails.ratedStars 2}}
+    <label>
+    <input type="radio" name="stars" checked value="2" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  {{else}}
+  {{#if_eq userReview.reviewDetails.ratedStars 3}}
+    <label>
+    <input type="radio" name="stars" checked value="3" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>   
+  </label>
+  {{else}}
+  {{#if_eq userReview.reviewDetails.ratedStars 4}}
+  <label>
+    <input type="radio" name="stars" checked value="4" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  {{else}}
+  {{#if_eq userReview.reviewDetails.ratedStars 5}}
+
+
+  
+  <label>
+    <input type="radio" name="stars" checked value="5" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  {{else}}
+  <label >
+    <input type="radio" name="stars" required value="1" />
+    <span class="icon">★</span>
+
+  </label>
+   <label>
+    <input type="radio" name="stars" required  value="2" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+ 
+  </label>
+   <label>
+    <input type="radio" name="stars" required value="3" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    
+  </label>
+   <label>
+    <input type="radio" name="stars" required value="4" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    
+  </label>
+   <label>
+    <input type="radio" name="stars" required value="5" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+
+  {{/if_eq}}
+  {{/if_eq}}
+  {{/if_eq}}
+  {{/if_eq}}
+  {{/if_eq}}
+</div>
+
+<div class="rating1" style="display: none;" id="editStars">
+    
+    <label>
+        
+    <input type="radio" name="stars" value="1" required />
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="2" required/>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="3" required />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>   
+  </label>
+  <label>
+    <input type="radio" name="stars" value="4" required/>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="5" required />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+</div>
+
+    </div>
+    <div class="col-md-3 editStarButton">
+      <span id="starEdit"  onclick="editStars()"><i style="font-size: 2rem !important;" class="las la-edit"></i></span>
+    </div>
+    </div>
+    
+    </div>
+    
+</div>
+
+
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<div class="form-group">
+<label>Your Review <span>*</span></label>
+<textarea name="review" required data-error="Please fill this"  class="form-control" cols="30" rows="8" placeholder="Your Review">{{userReview.reviewDetails.review}}</textarea>
+</div>
+</div>
+
+<input type="text" hidden name="proId" value="{{userReview.proId}}">
+<input type="text" hidden name="userId" value="{{userReview.reviewDetails.userId}}">
+<input type="text" hidden name="name" value="{{userReview.reviewDetails.userName}}">
+
+<div class="col-lg-12 col-md-12">
+<button type="submit"  class="default-btn border-radius-5">
+Edit
+</button>
+</div>
+</div>
+</form>
+{{else}}
+<h3>Add Your Review</h3>
+<form id="reviewForm" action="/addReview"  >
+
+<div class="row">
+    <div class="col-md-3">
+        <h4>Your Rating</h4>
+    </div><div class="col-md-6">
+        <div class="rating1">
+    
+    <label>
+        
+    <input type="radio" name="stars" value="1" required />
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="2" required/>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="3" required />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>   
+  </label>
+  <label>
+    <input type="radio" name="stars" value="4" required />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="5" required />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+</div>
+
+    </div>
+</div>
+
+
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<div class="form-group">
+<label>Your Review <span>*</span></label>
+<textarea name="review" required data-error="Please fill this"  class="form-control" cols="30" rows="8" placeholder="Your Review"></textarea>
+</div>
+</div>
+
+<input type="text" hidden name="proId" value="{{product._id}}">
+<input type="text" hidden name="userId" value="{{user._id}}">
+<input type="text" hidden name="name" value="{{user.name}}">
+
+<div class="col-lg-12 col-md-12">
+<button type="submit" id="submitButton" class="default-btn border-radius-5">
+Send 
+</button>
+</div>
+</div>
+</form>
+{{/if}}
+
+
+{{else}}
+<a href="/login">Sign In to add Review </a>
+{{/if}}
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="all-product-area pb-70">
+<div class="container">
+<div class="section-title">
+<h2>Recommended Products for You</h2>
+</div>
+<div class="row pt-45">
+{{#each recomendedProducts}}
+<div class="col-lg-4 col-md-6">
+<div class="all-product-item">
+<div class="row align-items-center">
+<div class="col-lg-5 col-sm-5 pr-0">
+<div class="all-product-img">
+<a href="/single-product/{{this._id}}">
+<img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images">
+</a>
+
+</div>
+</div>
+<div class="col-lg-7 col-sm-7">
+<div class="all-product-content">
+<h3><a href="/single-product/{{this._id}}">{{this.name}}</a></h3>
+<div class="rating-tag " > <div class="stars-outer"><div id="allProducts{{this._id}}" style="width: {{this.totalRatingPercentage}};" class="stars-inner"></div></div> <span class="text-muted " style="margin-left: 1em;" id="allProductRating{{this._id}}">{{#if this.totalRating}}({{this.totalRating}}){{else}}(0){{/if}}</span> </div>
+<span class="">{{#if this.initialPrice}}
+												 <del class="text-secondary" style="font-weight: 400;">₹{{#priceComma this.initialPrice}}{{/priceComma}}</del>
+												{{/if}}₹{{#priceComma this.price}}{{/priceComma}} </span>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+{{/each}}
+
+</div>
+</div>
+</div>
+
+<script>
+  let product ={{{productJson}}}
+  
+	let wishlistitem={{{wishlistItemJson}}}
+  
+  let icon
+	let button=document.getElementById('wishlistButton')
+	
+	
+		
+		
+		
+		for (j=0;j<wishlistitem.length;j++){
+			 if(product._id===wishlistitem[j].item){
+				 
+
+				
+				icon= document.getElementById('wishlistIcon')
+				icon.style.color='#fb341f'
+        button.onclick=(e)=>{
+          e.stopPropagation()
+        }
+				
+				
+				
+		
+		 
+		 
+		 
+			   
+                  
+				
+
+			
+				
+			
+				
+			} 
+		
+	}
+</script>
+
+
+
+	<script>
+  let rating = {{{ratingJson}}}
+  
+  // Run getRatings when DOM loads
+  document.addEventListener('DOMContentLoaded', getRatings());
+
+
+
+  // Get ratings
+  function getRatings() {
+
+        
+        
+      // Get percentage
+      
+
+      // Set width of stars-inner to percentage
+       document.getElementById('mainRating').style.width =rating.ratingPercentage
+       document.getElementById('reviewRating').style.width =rating.ratingPercentage
+	  
+	     
+       
+
+      
+      
+      
+  }
+</script>
+ <script>
+ let review = {{{reviewJson}}}
+ 
+    
+    
+    const starsTotal = 5;
+
+  // Run getRatings when DOM loads
+  document.addEventListener('DOMContentLoaded', getRatings());
+
+
+
+  // Get ratings
+  function getRatings() {
+      for(i=0;i<review.length;i++){
+    
+        
+        
+      // Get percentage
+      const starPercentage = (review[i].ratedStars / starsTotal) * 100;
+
+      // Round to nearest 10
+      const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+      // Set width of stars-inner to percentage
+       
+	   
+	    document.getElementById(review[i].time).style.width =starPercentageRounded;
+       
+	  
+      
+      
+      
+    
+}
+  }
+  
+ </script>
+ <script>
+   let review1 = {{{reviewJson}}}
+    let userReview={{{userReviewJson}}}
+    for(i in review1){
+    
+    if(review1[i].userId == userReview.userId){
+      console.log(review1[i].userId+userReview.reviewDetails.userName)
+      let editIcon=document.getElementById(userReview.userId)
+      editIcon.style.display='block'
+
+    }
+      
+    } 
+
+ </script>
+ <script>
+	
+  function editStars(){
+    
+    let ratedStars=document.getElementById('ratedStars')
+    let editStars=document.getElementById('editStars')
+    let editStarsResponsive=document.getElementById('editStarsResponsive')
+    let span=document.getElementById("starEdit")
+    ratedStars.style.display='none'
+    editStars.style.display='block'
+    editStarsResponsive.style.display='block'
+    span.style.display='none'
+
+    
+   
+  }
+
+	</script>
+	<!--Include JQuery Library -->
+	<script src=
+"https://code.jquery.com/jquery-3.5.0.js">
+	</script>
+	<script>
+	
+	// When DOM is loaded this
+	// function will get executed
+	$(() => {
+		// function will get executed
+		// on click of submit button
+		$("#submitButton").click(function(ev) {
+			var form = $("#reviewForm");
+			var url = form.attr('action');
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: form.serialize(),
+				success: function(data) {
+					if(data.status){
+					// Ajax call completed successfully
+					
+                    location.reload()
+                    }
+				},
+				error: function(data) {
+					
+					// Some error in ajax call
+					alert("some Error");
+				}
+			});
+		});
+	});
+  
+	</script>
+  
+
+  <script>
+   
+    
+    
+  </script>
+
+
+
+<script src="/js/add.js"></script>
+  
+<script src="/js/jquery-3.5.1.slim.min.js"></script> 
+<script src="/js/bootstrap.bundle.min.js"></script> 
+<script src="/js/owl.carousel.min.js"></script> 
+<script src="/js/jquery.magnific-popup.min.js"></script> 
+<script src="/js/jquery.nice-select.min.js"></script> 
+<script src="/js/wow.min.js"></script> 
+<script src="/js/meanmenu.js"></script> 
+<script src="/js/slick.min.js"></script> 
+<script src="/js/jquery.ajaxchimp.min.js"></script> 
+<script src="/js/form-validator.min.js"></script> 
+<script src="/js/jquery.validate.js"></script> 
+<script src="/js/jquery-ui.min.js"></script> 
+<script src="/js/mixitup.min.js"></script> 
+<script src="/js/custom.js"></script>
+
+

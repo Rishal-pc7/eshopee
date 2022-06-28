@@ -1,0 +1,373 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/avatar.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/js/autocomplete.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/autocomplete.css">
+
+
+
+
+<div class="row">
+
+	<div class="col-12">
+
+<div class="navbar1">
+	<a class="navbar-brand brand"  href="/"> <h3 style="color: #fb341f;margin: 1em;"><svg xmlns="http://www.w3.org/2000/svg" style="height: 28px;margin-top: -.2em;" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M25.71,228.16l.35-.48c0,.16,0,.32-.07.48Zm460.58,15.51c0-44-7.76-84.46-28.81-122.4C416.5,47.88,343.91,8,258.89,8,119,7.72,40.62,113.21,26.06,227.68c42.42-61.31,117.07-121.38,220.37-125,0,0,109.67,0,99.42,105H170c6.37-37.39,18.55-59,34.34-78.93-75.05,34.9-121.85,96.1-120.75,188.32.83,71.45,50.13,144.84,120.75,172,83.35,31.84,192.77,7.2,240.13-21.33V363.31C363.6,419.8,173.6,424.23,172.21,295.74H486.29V243.67Z"/></svg> <span style="margin-left: -.2em;">Shopee</span></h3> </a>
+	<div class="item-align">
+		{{#unless loginPage}}
+		
+<a class="item las la-home "
+ href="/" id="homeMob" title="home"></a>
+ 
+
+<a  href="/view-orders" id="ordersMob"  title="Wishlist" class="item fa fa-truck"></a> 
+<a  href="/wishlist" id="wishlistMob"  title="Wishlist" class="item flaticon-heart"><span class="cartCount" id="wishlist-count1">{{wishlistCount}}</span></a>
+
+
+<a  href="/cart" id="cartMob" title="cart" class="item fa fa-shopping-cart"><span class="cartCount" id="cart-count1">{{count}}</span></a>
+
+
+{{#if user}}
+
+<a href="/profile" id="profile-image" title="Profile" style="display: none;" >{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</a>
+<a href="/profile"  id="avatarImgMob" ><img id="userImgMob" class="avatar2" style="margin-left: 0;" src="/user-images/{{user._id}}/thumbImage{{user._id}}.jpg" alt=""></a>
+{{else}}
+<a class="item las la-user-plus" title="login" href="/login"></a>
+{{/if}}
+
+
+{{/unless}}
+</div>
+
+</div>
+</div>
+</div>
+
+
+  <div class="navbar-area" id="navbar-area">
+
+
+
+	<div class="main-nav">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light "> <a class="navbar-brand" href="/"> <h3 style="color: #fb341f;"><svg xmlns="http://www.w3.org/2000/svg" style="height: 28px;margin-top: -.2em;" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M25.71,228.16l.35-.48c0,.16,0,.32-.07.48Zm460.58,15.51c0-44-7.76-84.46-28.81-122.4C416.5,47.88,343.91,8,258.89,8,119,7.72,40.62,113.21,26.06,227.68c42.42-61.31,117.07-121.38,220.37-125,0,0,109.67,0,99.42,105H170c6.37-37.39,18.55-59,34.34-78.93-75.05,34.9-121.85,96.1-120.75,188.32.83,71.45,50.13,144.84,120.75,172,83.35,31.84,192.77,7.2,240.13-21.33V363.31C363.6,419.8,173.6,424.23,172.21,295.74H486.29V243.67Z"/></svg> <span style="margin-left: -.2em;">Shopee</span></h3> </a>
+				<div class="collapse navbar-collapse " id="navbarSupportedContent">
+					<ul class="navbar-nav m-auto">
+						{{#unless loginPage}}
+						<li class="nav-item"> <a href="/" id="home" class="nav-link "> Home  </a>
+
+						</li>
+
+
+                  
+                        {{#if user}}
+						<li class="nav-item"> <a href="/view-orders" id="orders" class="nav-link">Orders  </a>
+
+						</li>
+						{{/if}}
+						<li class="nav-item"> <a href="/connect-us" id="contact" class="nav-link"> Connect Us </a> </li>
+					</ul>
+					<div class="nav-side d-display">
+						<ul class="nav-side-item">
+							
+							
+							<li> <a href="#" class="cart-btn"> <i class='flaticon-envelope'></i> <span>1</span> </a> </li>
+							{{#unless dontShowList}}
+							<li> <a href="/wishlist" class="cart-btn" id="wishlist"> <i class='flaticon-heart'></i> <span id="wishlist-count">{{wishlistCount}}</span> </a> </li>
+							{{/unless}}
+							{{#unless dontShowCart}}
+								<li> <a href="/cart" class="cart-btn" id="cart"> <i class="las la-shopping-cart" style="font-size: 30px;"></i> <span id="cart-count">{{count}}</span> </a> </li>
+								{{/unless}}
+								
+								{{/unless}}
+
+
+						</ul>
+					</div>
+					<div>
+						<ul>
+							{{#if user}}
+							
+							
+							
+							
+								 <li  class="avatar " id="avatar" style="display: none;" title="Profile"  ><a href="/profile" id="avatar_letters">{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</a></li>
+								 
+
+
+
+								 {{/if}}
+						</ul>
+						<a href="/profile"  id="avatarImg" ><img id="userImg" class="avatar2" src="/user-images/{{user._id}}/thumbImage{{user._id}}.jpg" alt=""></a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+</div>
+
+{{#unless loginPage}}
+{{#unless profilePage}}
+{{#unless dontShowList}}
+{{#unless dontShowCart}}
+{{#unless orderPage}}
+{{#unless contactPage}}
+<div class="nav-bottom ">
+	<div class="container">
+		<div class="row">
+
+
+
+
+			 {{#unless singleProduct}}
+			<div class="col-lg-3 col-12" >
+
+				
+
+
+			</div>
+
+			<div class="col-lg-6 col-md-12  ">
+
+				<div class="top-header-form">
+					<form autocomplete="off" id="searchForm" method="get"  action="/s" class="nav-bottom-form">
+					
+						<div class="nav-bottom-form">
+						<div class="row">
+							
+							<div class="col-lg-11 col-sm-11 col-11  ">
+								<div class="form-group search-form">
+									<input  type="text" id="productSearch" name="proName" class="form-control" placeholder="Find Your Product">
+								</div>
+							</div>
+
+							<div class="col-lg-1 col-sm-1 col-1 search">
+								<button  id="searchButton"> <i class="flaticon-searching"></i> </button>
+							</div>
+						</div>
+						</div>
+						
+					</form>
+				</div>
+
+			</div>
+
+			{{/unless}}
+			<div class="col-lg-3  desktop-user " style="margin-left: auto;" >
+
+
+
+
+					{{#unless  user}}
+
+					<div class="nav-user">
+					<ul>
+						<li class="user-icon"><i class="lar la-user"></i></li>
+
+						<li><a href="/signup">Register</a></li>
+						<li><a href="/login">Log In</a></li>
+					</ul>
+					</div>
+
+					{{/unless}}
+
+			</div>
+		</div>
+	</div>
+</div>
+{{/unless}}
+{{/unless}}
+{{/unless}}
+{{/unless}}
+{{/unless}}
+{{/unless}}
+
+ <script>
+	 let pathname=location.pathname
+   
+	 if(pathname == '/login'){
+
+	 }else{
+
+	 
+	  $('#userImg').on('error',()=>{
+		
+        document.getElementById('avatarImg').style.display='none'
+        document.getElementById('avatar').style.display='block'
+        
+        
+        }) 
+		$('#userImgMob').on('error',()=>{
+		 
+        document.getElementById('avatarImgMob').style.display='none'
+        document.getElementById('profile-image').style.display='block'
+        
+        
+        }) 
+		
+        
+		 let arr=[]
+		 let pathSplit
+	 let specialChars="-"
+	 for(i = 0; i < specialChars.length;i++){
+   if(pathname.indexOf(specialChars[i]) > -1){
+      
+	  
+	  pathSplit=pathname.split('-')
+   
+ 
+
+    }
+ }
+		if(pathname == '/'){
+			document.getElementById('home').setAttribute('class','nav-link active')
+			
+			document.getElementById('homeMob').style.color='#fb341f'
+
+
+		}else if(pathname == '/connect-us'  || pathname =='/feedback-submitted' > -1 ){
+			document.getElementById('contact').setAttribute('class','nav-link active')
+			document.getElementById('contactMob').style.color='#fb341f'
+
+		}else if(pathname == '/view-orders' || pathname =='/orderPlaced'){
+			document.getElementById('orders').setAttribute('class','nav-link active')
+			document.getElementById('ordersMob').style.color='#fb341f'
+			
+
+		}
+		else if(pathname == '/s'){
+			document.getElementById('home').setAttribute('class','nav-link active')
+			
+			document.getElementById('homeMob').style.color='#fb341f'
+			
+
+		}
+		else if(pathname == '/wishlist'){
+			
+		
+			
+			document.getElementById('wishlistMob').style.color='#fb341f'
+			
+
+		}
+		else if(pathname == '/cart'){
+			
+			
+			document.getElementById('cartMob').style.color='#fb341f'
+			
+
+		}
+		
+		
+		else if(pathSplit.indexOf('order') > -1  || pathSplit.indexOf('/track') > -1   ){
+			document.getElementById('orders').setAttribute('class','nav-link active')
+			
+			document.getElementById('ordersMob').style.color='#fb341f'
+
+		}
+
+		else if(pathSplit.indexOf('/single') > -1   ){
+            
+			document.getElementById('home').setAttribute('class','nav-link active')
+		}
+
+		var productsJson= {{{productJson}}}
+       
+
+		
+
+		if(productsJson){
+
+
+		var productDetails=[]
+		for(i in productsJson){
+			let proObj={
+				name:productsJson[i].name,
+				category:productsJson[i].category
+			}
+			productDetails.push(proObj,)
+		}
+
+		var items = productDetails.map(function (n) { return { name: n.name,category:n.category }})
+		var allowedChars = new RegExp(/^[a-zA-Z\s]+$/)
+
+		function charsAllowed(value) {
+			return allowedChars.test(value);
+		}
+
+		autocomplete({
+			input: document.getElementById('productSearch'),
+			minLength: 1,
+			onSelect: function (item, inputfield) {
+				inputfield.value = item.name
+			},
+			fetch: function (text, callback) {
+				var match = text.toLowerCase();
+				callback(items.filter(function(n) { return n.name.toLowerCase().indexOf(match) !== -1; }));
+			},
+			render: function(item, value) {
+
+				var itemElement = document.createElement("div");
+				itemElement.setAttribute('class','row')
+				var div=document.createElement('div')
+				div.setAttribute('class','col-8')
+				    var paraDiv=document.createElement('div')
+
+                    var p=document.createElement('p')
+					paraDiv.setAttribute('class','text-muted col-4')
+					paraDiv.style.float='right'
+					p.style.fontSize='.8em'
+					p.style.float='right'
+					p.style.marginTo='.2em'
+					p.innerHTML='in'+" "+item.category
+                    paraDiv.appendChild(p)
+					div.textContent = item.name ;
+					itemElement.appendChild(div)
+					itemElement.appendChild(paraDiv)
+
+				return itemElement;
+			},
+			emptyMsg: "Not found",
+			customize: function(input, inputRect, container, maxHeight) {
+				if (maxHeight < 100) {
+					container.style.top = "";
+					container.style.bottom = (window.innerHeight - inputRect.bottom + input.offsetHeight) + "px";
+					container.style.maxHeight = "140px";
+				}
+			}
+		})
+
+		document.querySelector("input").focus();
+	 }
+		}
+
+		
+ </script>
+
+       
+			
+	
+
+<script src="/js/navbar.js"></script>
+
+
+<script src="/js/jquery-3.5.1.slim.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<script src="/js/jquery.ajaxchimp.min.js"></script>
+
+<script src="/js/custom.js"></script>

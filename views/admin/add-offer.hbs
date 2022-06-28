@@ -1,0 +1,317 @@
+ <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/avatar.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   
+
+<section class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="text-center">Add Product</h2>
+            <h4 class="text-muted"><span class="text-danger">*</span> Fill all Fields</h4>
+            <form  id="addProductForm"  action="/admin/add-offer" method="post"  enctype="multipart/form-data" >
+                <label for="">Initial Price</label>
+                
+                {{#if proExistTrue}}
+                <input style="background-color: #fff;" id="initial-price" type="text" name="initial-price" value="{{#priceComma proExist.price}}{{/priceComma}}" readonly class="form-control" required>
+                {{else}}
+                <input style="background-color: #fff;" id="initial-price" type="text" name="initial-price" value="{{#priceComma product.price}}{{/priceComma}}" readonly class="form-control" required>
+                {{/if}}
+                <label for="">Offer Price</label>
+                <input id="offer-price" type="text"  name="offer-price" class="form-control" required>
+                <label for="">Discount</label>
+                <p class="text-muted">In percentage</p>
+                <input id="discount" type="text" name="discount" class="form-control" required>
+                <label>Offer Date</label>
+                <p class="text-muted">Write in dd/mm/yy format</p>
+                
+                <div class="row" style="margin-left: -10px;" >
+                    
+  <div class="col-2">
+    
+      
+      <select name="startDay" id="" class="form-select" required   >
+                    <option value="" disabled selected hidden>0</option>
+                     {{#each day}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+    
+  </div>
+  <div class="col-1" style="    margin-left: -1.5em;
+    margin-right: -3.5em;"><p style="font-size: 1.5em;
+">/</p></div>
+  
+  <div class="col-2" >
+      
+    
+      
+      <select name="startMonth" id="" class="form-select" required   >
+                    <option value="" disabled selected hidden>0</option>
+                     {{#each month}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+   
+  </div>
+  <div class="col-1" style="    margin-left: -1.5em;
+    margin-right: -3.5em;"><p style="font-size: 1.5em;
+">/</p></div>
+   <div class="col-2" >
+      
+    
+      
+      <select name="startYear" id="" class="form-select" required   >
+                    <option value="" disabled selected hidden>0</option>
+                     {{#each year}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+   
+  </div>
+    
+   
+   <div class="col-2" >
+      
+    
+      
+       <select name="startHour" id="" class="form-select" required   >
+                    <option value="12"  selected hidden>12</option>
+                     {{#each hour}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+   
+  </div>
+  <div class="col-1" style="    margin-left: -1.65em;
+    margin-right: -4em;"><p style="font-size: 1.5em;
+">:</p></div>
+   <div class="col-2" >
+      
+    
+      
+       <select name="startMinute" id="" class="form-select" required   >
+                    <option value="00"selected hidden>00</option>
+                    {{#each minute}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                    
+                </select>
+   
+  </div>
+  <div class="col-2" >
+      
+    
+      
+      <select name="startam_pm" id="" class="form-select" required   >
+                    <option selected value="AM">AM</option>
+                    <option value="PM">PM</option>
+
+                </select>
+   
+  </div>
+</div>
+<label>Last Date</label>
+                <p class="text-muted">Write in dd/mm/yy format</p>
+                
+                <div class="row" style="margin-left: -10px;" >
+                    
+  <div class="col-2">
+    
+      
+      <select name="lastDay" id="" class="form-select" required   >
+                    <option value="" disabled selected hidden>0</option>
+                     {{#each day}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+    
+  </div>
+  <div class="col-1" style="    margin-left: -1.5em;
+    margin-right: -3.5em;"><p style="font-size: 1.5em;
+">/</p></div>
+  
+  <div class="col-2" >
+      
+    
+      
+      <select name="lastMonth" id="" class="form-select" required   >
+                    <option value="" disabled selected hidden>0</option>
+                     {{#each month}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+   
+  </div>
+  <div class="col-1" style="    margin-left: -1.5em;
+    margin-right: -3.5em;"><p style="font-size: 1.5em;
+">/</p></div>
+   <div class="col-2" >
+      
+    
+      
+      <select name="lastYear" id="" class="form-select" required   >
+                    <option value="" disabled selected hidden>0</option>
+                     {{#each year}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+   
+  </div>
+    
+   
+   <div class="col-2" >
+      
+    
+      
+       <select name="lastHour" id="" class="form-select" required   >
+                    <option value="12"selected hidden>12</option>
+                     {{#each hour}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+   
+  </div>
+  <div class="col-1" style="    margin-left: -1.65em;
+    margin-right: -4em;"><p style="font-size: 1.5em;
+">:</p></div>
+   <div class="col-2" >
+      
+    
+      
+       <select name="lastMinute" id="" class="form-select" required   >
+                    <option value="00"  selected hidden>00</option>
+                    {{#each minute}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                    
+                </select>
+   
+  </div>
+  <div class="col-2" >
+      
+    
+      
+      <select name="lastam_pm" id="" class="form-select" required   >
+                    <option selected value="AM">AM</option>
+                    <option value="PM">PM</option>
+
+                </select>
+   
+  </div>
+</div>
+                <input type="text" name="proId" value="{{product._id}}" hidden>
+                
+
+                <button  class="btn btn-success  mt-5 " style="margin-top: 15px;" type="submit">Add Offer</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+    var text = document.getElementById("offer-price");
+    let discountInput=document.getElementById('discount')
+window.onload = function() {
+  text.addEventListener("input", function() {
+      let originalPrice=document.getElementById('initial-price').value
+      let specialChars=','
+            let priceSplit
+        for(i in specialChars){
+            if(originalPrice.indexOf(specialChars[i]) > -1){
+      
+	  
+                priceSplit=originalPrice.split(',')
+                originalPrice=priceSplit.join("")
+           
+          
+              }
+              
+
+        }
+        originalPrice=parseInt(originalPrice)
+        let offerPrice=text.value
+        
+        
+        let discount=document.getElementById('discount')
+        let discountedPercentage= (originalPrice - offerPrice) / originalPrice *100
+       
+        discountedPercentage=parseInt(discountedPercentage)
+        discount.value=discountedPercentage+'%'
+    
+  });
+  discountInput.addEventListener("input", function() {
+      let originalPrice=document.getElementById('initial-price').value
+        
+        let specialChars=','
+            let priceSplit
+        for(i in specialChars){
+            if(originalPrice.indexOf(specialChars[i]) > -1){
+      
+	  
+                priceSplit=originalPrice.split(',')
+                originalPrice=priceSplit.join("")
+           
+          
+              }
+              
+
+        }
+        originalPrice=parseInt(originalPrice)
+        
+        
+        let discount=parseInt(discountInput.value)
+        let discountedRate= originalPrice-(originalPrice * discount / 100)  
+        discountedRate=parseInt(discountedRate)
+        let arr=[]
+  discountedRate=""+discountedRate
+  arr.push(discountedRate.split(""))
+  let price
+  let commas=arr[0]
+  
+  if(commas.length > 3){
+    
+    if(commas.length == 4){
+      price=commas[0]+","+commas[1]+commas[2]+commas[3]
+    }
+    else if(commas.length == 5){
+      price=commas[0]+commas[1]+","+commas[2]+commas[3]+commas[4]
+    }
+    else if(commas.length == 6){
+      price=commas[0]+","+commas[1]+commas[2]+","+commas[3]+commas[4]+commas[5]
+    }
+    else if(commas.length == 7){
+      price=commas[0]+commas[1]+","+commas[2]+commas[3]+","+commas[4]+commas[5]+commas[6]
+    }
+    else if(commas.length == 8){
+      price=commas[0]+","+commas[1]+commas[2]+","+commas[3]+commas[4]+","+commas[5]+commas[6]+commas[7]
+    }
+    else if(commas.length == 9){
+      price=commas[0]+commas[1]+","+commas[2]+commas[3]+","+commas[4]+commas[5]+","+commas[6]+commas[7]+commas[8]
+    }
+  }
+  else{
+    price=commas.join("")
+  }
+     
+       text.value=price
+       
+    
+  });
+  
+}
+    
+</script>
+
+

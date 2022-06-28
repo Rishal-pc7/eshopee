@@ -1,0 +1,157 @@
+
+
+#profile-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #449798;
+    
+    color: #fff;
+    text-align: center;
+       vertical-align: middle;
+         font-size: .7em;
+         line-height: 33px;
+   
+    
+         float: right;
+         top: 6px;
+         margin-top: 1.4em;
+         margin-left: 10px;
+}
+
+#profile-picture {
+    margin-bottom: 8px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #449798;
+    color: #fff;
+    text-align: center;
+       vertical-align: middle;
+         font-size: 2.5em;
+         line-height: 2em;
+}
+
+
+@media only screen and (min-width:300px) and (max-width:991px){
+    .avatar{
+            font-size: .5em;
+            top: -1px !important;
+
+    }
+}
+.navbar1{
+    padding-right: .5em;
+}
+.image-column{
+    display: none;
+}
+@media only screen and (min-width:500px) and (max-width:991px){
+    .image-column{
+           display: block;
+
+    }
+}
+
+
+.hideme {
+    display: none;
+}
+    
+.avatar {
+                /* Center the content */
+                display: inline-block;
+                vertical-align: middle;
+
+                /* Used to position the content */
+                position: relative;
+
+                /* Colors */
+                background-color: #449798;
+                color: #fff;
+
+                /* Rounded border */
+                border-radius: 50%;
+                height: 32px;
+                width: 32px;
+                top: 10px;
+                margin-right: 50px;
+
+            }
+            .avatar1 {
+                /* Center the content */
+                display: inline-block;
+               
+
+                /* Used to position the content */
+                position:relative;
+
+                /* Colors */
+                background-color: #ccc;
+               
+
+                /* Rounded border */
+                
+                height: 5em;
+                width: 5em;
+                top: 41px;
+                
+
+            }
+            #avatar__letters{
+                left: 50%;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                font-size: 2em;
+
+            }
+            
+            #avatar_letters {
+                /* Center the content */
+                left: 50%;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+            }
+            .cartCount{
+                  position: absolute;
+                  top: 8px;
+                  width: 15px;
+                  height: 15px;
+                  line-height: 15px;
+                  background-color: #fb341f;
+                  color: #ffffff;
+                  font-size: 11px;
+                  text-align: center;
+                  border-radius: 50px;
+            }
+
+            .admin_avatar{
+                background-color: #fff !important;
+
+            }
+            .admin_avatar:hover{
+                background-color: #fff !important;
+            }
+
+            .avatar2{
+                display: inline-block;
+               
+
+                /* Used to position the content */
+                position:relative;
+
+                /* Colors */
+                
+               
+
+                /* Rounded border */
+                border-radius: 50%;
+                
+                top: -4px;
+                margin-left: 60px;
+
+            }

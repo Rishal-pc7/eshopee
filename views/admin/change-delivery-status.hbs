@@ -1,0 +1,239 @@
+ <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/avatar.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+<style>
+    body{
+        min-height: 150vh !important;
+    }
+
+    .bar-progress{
+       border-left: 6px solid #ccc;
+      height: 13em;
+      background-color: #fff;
+      margin-top: -1em !important;
+      margin-left: 0.3em;
+    }
+    .bar-progress .filled-progress{
+        border-left: 6px solid #0d6efd;
+        height: 100%;
+        margin-left: -.4em;
+    }
+    .bar-progress .unfilled-progress{
+        border-left: 6px solid #0d6efd;
+        height: 50%;
+        margin-left: -.4em;
+    }
+    .form-div{
+        margin-top: -3em !important;
+    }
+    .form-div-last{
+        margin-top: -2em !important;
+    }
+    .time{
+            margin-bottom: -6em;
+           margin-left: 1.5em;
+           margin-top: 3em;
+           
+    }.last-progress{
+        border-left: 6px solid #0d6efd;
+      height: 100%;
+      background-color: #fff;
+      margin-top: -1em !important;
+      margin-left: -.4em;
+    }
+    .bar-last-progress{
+        border-left: 6px solid #ccc;
+      height: 6em;
+      background-color: #fff;
+      margin-top: -1em !important;
+      margin-left: 0.3em;
+      margin-bottom: 1em;
+    }
+</style>
+<div class="container mt-5">
+    <div class="row pt-5">
+        <form action="">
+            <div>
+                {{#if details.ordered.status}}
+            <input type="radio" class="form-radio" name="ordered" readonly checked id="ordered">
+            <label for=""><h5>Ordered</h5></label>
+            <p class="text-muted time"><small>On {{details.ordered.date}}</small> </p>
+            {{#if details.packed.status}}
+            <div class="bar-progress"><div class="filled-progress"></div></div>
+            {{else}}
+            <div class="bar-progress"><div class="unfilled-progress"></div></div>
+
+            {{/if}}
+            {{else}}
+            <input type="radio"  class="form-radio" name="ordered"  id="ordered">
+            <label for=""><h5>Ordered</h5></label>
+            <div class="bar-progress"></div>
+            {{/if}}
+            
+            
+            </div>
+            <div class="form-div">
+                {{#if details.packed.status}}
+            <input type="radio" name="packed" checked readonly  id="packed">
+            <label for=""><h5>Packed</h5></label>
+            <p class="text-muted time"><small>On {{details.packed.date}}</small> </p>
+            {{#if details.shipped.status}}
+            <div class="bar-progress"><div class="filled-progress"></div></div>
+            {{else}}
+            <div class="bar-progress"><div class="unfilled-progress"></div></div>
+
+            {{/if}}
+            {{else}}
+            <input type="radio" onchange="changeStatus('packed','{{orderId}}')" name="packed"   id="packed">
+            <label for=""><h5>Packed</h5></label>
+            <div class="bar-progress"></div>
+            {{/if}}
+            
+            </div>
+            <div class="form-div">
+                {{#if details.shipped.status}}
+            <input type="radio"  name="shipped" checked readonly  id="shipped">
+            <label for=""><h5>Shipped</h5></label>
+            <p class="text-muted time"><small>On {{details.shipped.date}}</small> </p>
+            {{#if details.delivered.status}}
+            <div class="bar-progress"><div class="filled-progress"></div></div>
+            {{else}}
+            <div class="bar-progress"><div class="unfilled-progress"></div></div>
+
+            {{/if}}
+            {{else}}
+            <input type="radio"  name="shipped" onchange="changeStatus('shipped','{{orderId}}')"  id="shipped">
+            <label for=""><h5>Shipped</h5></label>
+            <div class="bar-progress"></div>
+            {{/if}}
+            
+            </div>
+            <div class="form-div-last">
+                {{#if details.delivered.status}}
+            <input type="radio" name="delivered" checked readonly  id="delivered">
+            <label for=""><h5>Delivered</h5></label>
+            <p class="text-muted time"><small>On {{details.delivered.date}}</small> </p>
+            <div class="bar-last-progress"><div class="last-progress"></div></div>
+            {{else}}
+            <input type="radio" onchange="changeStatus('delivered','{{orderId}}')" name="delivered"   id="delivered">
+            <label for=""><h5>Delivered</h5></label>
+            <div class="bar-last-progress"></div>
+            {{/if}}
+            
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    let status={{{status}}}
+    if(status){
+          swal("The Order is not Placed", {
+                    icon: "warning",
+                  }).then(()=>{
+                      location.href='/admin/all-orders'
+                  })
+    }
+    
+</script>
+<script>
+  function changeStatus(name,orderId){
+      var date = new Date();
+            var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+            var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+            hours = hours < 10 ? "0" + hours : hours;
+            var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+            const month=["January","February","March","April","May","June","July","August","September","October","November","December"]
+            let date1=date.getDate()+" "+month[date.getMonth()]+" "+date.getFullYear()
+            let time = hours + ":" + minutes  +" "+ am_pm;
+            let obj={
+                date:date1+" "+time,
+                name:name,
+                orderId
+            }
+            let packed=document.getElementById('packed')
+            let ordered=document.getElementById('ordered')
+            let shipped=document.getElementById('shipped')
+            let delivered=document.getElementById('delivered')
+            if(name == 'packed'){
+                if(ordered.checked ){
+                    $.ajax({
+            url:'/admin/change-delivery-status',
+            method:'post',
+            data:obj,
+            success:(response)=>{
+                if(response.status){
+                    location.reload()
+                }
+
+            }
+        })
+
+                }else{
+                    swal('First change the above status',{
+                        icon:'warning'
+
+                    })
+                }
+            }
+            else if(name == 'shipped'){
+                if(packed.checked ){
+                    $.ajax({
+            url:'/admin/change-delivery-status',
+            method:'post',
+            data:obj,
+            success:(response)=>{
+                if(response.status){
+                    location.reload()
+                }
+
+            }
+        })
+
+                }else{
+                    swal('First change the above status',{
+                        icon:'warning'
+
+                    })
+                }
+            }
+            else if(name == 'delivered'){
+                console.log(shipped.checked)
+                if(shipped.checked ){
+                    console.log(shipped.checked)
+                    $.ajax({
+            url:'/admin/change-delivery-status',
+            method:'post',
+            data:obj,
+            success:(response)=>{
+                if(response.status){
+                    location.reload()
+                }
+
+            }
+        })
+
+                }else{
+                    swal('First change the above status',{
+                        icon:'warning'
+
+                    })
+                }
+            }
+
+        
+        
+    }
+</script>

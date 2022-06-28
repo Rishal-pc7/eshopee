@@ -1,0 +1,477 @@
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/rating-star.css">
+<link rel="stylesheet" href="/css/cart-responsive.css">
+	
+<div class="preloader">
+	<div class="d-table">
+		<div class="d-table-cell"> <img src="/img/preloder-img.png" alt="Images"> </div>
+	</div>
+</div>
+
+
+<div class="banner-area">
+	<div class="container">
+		<div class="row align-items-center">
+			
+			<div class="col-lg-4">
+				<div class="banner-side" id="top-sale">
+					<h2>Top Sale</h2>
+					<div class="row">
+						{{#each topDeals}}
+						<div class="col-lg-12  col-md-6">
+							<div class="banner-side-item">
+								
+								<div class="row align-items-center">
+									<div class="col-lg-5 col-sm-5 col-5 col-md-6 pr-0">
+										<div class="banner-side-img"> <img src="/product-images/{{this.item}}/displayImage{{this.item}}.jpg" alt="Images"> </div>
+									</div>
+									<div class="col-lg-7 col-sm-7 col-7 col-md-6">
+										<div class="banner-side-content">
+											
+											
+											
+											
+											<h3  id="topdeals{{this._id}}"><a href="/single-product/{{this.product._id}}" style="margin-bottom: 1em;">{{this.product.name}}-{{this.product.color}}</a></h3>
+											
+											
+											<div class="rating {{this.product._id}}" style="margin-top: 1em;"> <div class="stars-outer"><div id="topDeals{{this._id}}" style="width: {{this.product.totalRatingPercentage}};" class="stars-inner"></div></div> </div>
+											<span>
+												{{#if this.product.initialPrice}}
+												 <del class="text-secondary" style="font-weight: 400;">₹{{#priceComma this.product.initialPrice}}{{/priceComma}}</del>
+												{{/if}}
+												₹{{#priceComma this.product.price}}{{/priceComma}}</span> </div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						{{/each}}
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="banner-shape"> <img src="/img/home-bg-shape.png" alt="Images"> </div>
+</div>
+<div class="page-inner pt-100 pb-70">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="page-inner-item">
+					<div class="row align-items-center">
+						<div class="col-lg-6 col-6 col-sm-6">
+							<div class="content">
+								<h3><a style="color: black;" href="/single-product/{{mostRatedProduct._id}}">{{mostRatedProduct.name}}-{{mostRatedProduct.color}}</a> </h3>
+								<span style="color: #fb341f;">
+									{{#if mostRatedProduct.initialPrice}}
+												<del class="text-secondary" >₹{{mostRatedProduct.initialPrice}}</del>
+												{{/if}}
+									₹{{#priceComma mostRatedProduct.price}}{{/priceComma}}</span> <button style="border: 0;" class="shopping-btn border-radius-5" onclick="addToCart('{{mostRatedProduct._id}}')">Add to cart</button> </div>
+						</div>
+						<div class="col-lg-6 col-6 col-sm-6">
+							<div class="page-inner-img"> <img src="/product-images/{{mostRatedProduct._id}}/displayImage{{mostRatedProduct._id}}.jpg" alt="Images"> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="page-inner-item-2">
+					<div class="row align-items-center">
+						<div class="col-lg-7 col-7 col-sm-7">
+							<div class="content">
+								<h3><a style="color: black;" href="/single-product/{{mostPricedProduct._id}}">{{mostPricedProduct.name}}-{{mostPricedProduct.color}}</a> </h3>
+								<span>
+									{{#if mostPricedProduct.initialPrice}}
+												 <del >₹{{mostPricedProduct.initialPrice}}</del>
+												{{/if}}
+
+									₹{{#priceComma mostPricedProduct.price}}{{/priceComma}}</span> <button style="border: 0;" class="shopping-btn border-radius-5" onclick="addToCart('{{mostPricedProduct._id}}')">Add to cart</button> </div>
+						</div>
+						<div class="col-lg-5 col-5 col-sm-5">
+							<div class="page-inner-img"> <img src="/product-images/{{mostPricedProduct._id}}/displayImage{{mostPricedProduct._id}}.jpg" alt="Images"> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="best-deal-area pb-70" id="best-deal">
+	<div class="container">
+		<div class="section-title">
+			<h2>Best Deal</h2>
+			<a href="#all-products" class="view-btn">View All</a> </div>
+		<div class="row pt-45">
+			{{#each bestDeals}}
+			<div class="col-lg-3 col-sm-6">
+				
+				<div class="best-deal-card">
+					<div class="best-deal-img" > <a href="/single-product/{{this._id}}"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="{{this.name}}" > </a> <button id="bestDealWishlistButton{{this._id}}"  onclick="addToWishlist('{{this._id}}')"  style="border: none;"><i id="{{this._id}}" class="las la-heart"></i></button>  </div>
+					<div class="content">
+						<h3><a href="/single-product/{{this._id}}">{{this.name}}-{{this.color}}</a></h3>
+						<div class="rating-tag" > <div class="stars-outer"><div id="bestDeals{{this._id}}" style="width: {{this.totalRatingPercentage}}" class="stars-inner"></div></div> <span class="text-muted " style="margin-left: 1em;" id="bestDealRating{{this._id}}">{{#if this.totalRating}}({{this.totalRating}}){{else}}(0){{/if}}</span> </div>
+						<p>{{this.category}}</p>
+						<span >
+							{{#if this.initialPrice}}
+												 <del class="text-secondary"  style="font-weight: 400;">₹{{#priceComma this.initialPrice}}{{/priceComma}}</del>
+												{{/if}}
+							₹{{#priceComma this.price}}{{/priceComma}}</span> 
+						<span  style=" position: absolute;bottom: 0;right: 0;">  
+						<button  onclick="addToCart('{{this._id}}')" class="add-card" style="border: none;"><i class="las la-cart-plus"></i></button> 
+						
+						
+
+
+						
+						</span> 
+						</div>
+				</div>
+				
+			</div>
+			{{/each}}
+			
+		</div>
+	</div>
+</div>
+<div class="category-area pb-70">
+	<div class="container-fluid">
+		<div class="container-max">
+			<div class="category-list">
+				<ul>
+					<li> <a href="#"> <i class="flaticon-laptop"></i>
+						<h3>Laptop</h3>
+						</a> </li>
+					
+					<li> <a href="#"> <i class="flaticon-monitor"></i>
+						<h3>TV</h3>
+						</a> </li>
+					
+					<li> <a href="#"> <i class="flaticon-desktop-computer"></i>
+						<h3>PC</h3>
+						</a> </li>
+					<li> <a href="#"> <i class="flaticon-smartphone"></i>
+						<h3>Mobile</h3>
+						</a> </li>
+					<li> <a href="#"> <i class="flaticon-headphones"></i>
+						<h3>Accessories</h3>
+						</a> </li>
+					
+					<li> <a href="#"> <i class="flaticon-loud-speaker"></i>
+						<h3>Speakers</h3>
+						</a> </li>
+					
+					<li> <a href="#"> <i class="flaticon-camera-flash"></i>
+						<h3>Camera</h3>
+						</a> </li>
+						<li> <a href="#"> <i class="flaticon-vr-glasses"></i>
+						<h3>Smart products</h3>
+						</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{{#if activeOffers}}
+<div class="flash-sale-area pt-100 pb-70"  id="flash-sale">
+	<div class="container">
+		
+		<div class="section-title">
+			
+			<h2>Flash Sale</h2>
+			<a href="#all-products" class="view-btn">View All</a> </div>
+		<div class="row pt-45">
+			{{#each activeOffers}}
+			<div class="col-lg-3 col-md-6">
+				<div class="flash-sale-card">
+					<div class="flash-sale-img"> <a href="/single-product/{{this.product._id}}"> <img src="/product-images/{{this.product._id}}/displayImage{{this.product._id}}.jpg" alt="Images"> </a>
+						<div class="flash-tag"> <b>{{this.discountedPercentage}}</b>Off </div>
+						<button id="flashDealWishlistButton{{this.product._id}}"  onclick="addToWishlist('{{this.product._id}}')"  style="border: none;"><i id="flashDeal{{this.product._id}}" class="las la-heart"></i></button>
+						<div id="timer">
+							<div >{{this.remainingDays}} <span>Days</span></div>
+							<div >{{this.remainingHours}} <span>Hours</span></div>
+							<div >{{this.remainingMinutes}} <span>Minutes</span></div>
+							
+						</div>
+					</div>
+					<div class="content">
+						<h3><a href="/single-product/{{this.product._id}}">{{this.product.name}}-{{this.product.color}}</a></h3>
+						<div class="rating-tag"> <i class="las la-star"></i> ({{#if this.product.totalRating}}{{this.product.totalRating}}{{else}}0{{/if}}) </div>
+						<p>{{this.product.category}}</p>
+						<span> <del class="text-secondary" style="font-weight: 400;">₹{{#priceComma this.product.initialPrice}}{{/priceComma}}</del>₹{{#priceComma this.offerPrice}}{{/priceComma}}</span> <button  onclick="addToCart('{{this.product._id}}')" class="add-card" style="border: none;"><i class="las la-cart-plus"></i></button> </div>
+				</div>
+			</div>
+			{{/each}}
+			
+		</div>
+	
+	
+	
+	</div>
+</div>
+{{/if}}
+<div class="product-banner-area pt-100 pb-70">
+	<div class="container">
+		<div class="row">
+			{{#each mostOfferProducts}}
+			<div class="col-lg-6">
+				<div class="product-banner-item product-banner-item-bg">
+					<div class="row align-items-center">
+						<div class="col-lg-6  col-sm-6">
+							<div class="product-banner-img"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images">
+							{{#if this.discountedPercentage}}
+								<div class="product-banner-tag">
+									
+									<h3>{{this.discountedPercentage}}</h3>
+									<span >Off</span> </div>
+									{{/if}}
+							</div>
+						</div>
+						<div class="col-lg-6  col-sm-6">
+							<div class="content">
+								<h3>{{this.name}}</h3>
+								
+								<span style="margin-bottom: 1em;">only for <b>₹{{#priceComma this.price}}{{/priceComma}}</b></span>  <button onclick="addToCart('{{this._id}}')" class="shopping-btn border-radius-5 default-btn-border">Add to Cart</button> </div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			{{/each}}
+			
+		</div>
+	</div>
+</div>
+<div class="all-product-area pb-70">
+	<div class="container">
+		<div class="all-product-title">
+			<div class="row align-items-center">
+				<div id="all-products" class="col-lg-6 col-md-4">
+					<div class="all-product-text">
+						<h2>All Product</h2>
+
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-8">
+					<div class="all-product-top">
+						<ul class="filter-menu" style="display: none;">
+							<li class="filter active" data-filter="all">View All</li>
+							<li class="filter" data-filter=".hot-sell">Hot Sell</li>
+							<li class="filter" data-filter=".on-sell">On Sell</li>
+							<li class="filter" data-filter=".trend">Trend</li>
+						</ul>
+					</div>
+				</div>
+				{{#each products}}
+			<div class="col-lg-3 col-sm-6">
+				
+				<div class="best-deal-card">
+					<div class="best-deal-img" > <a href="/single-product/{{this._id}}"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="{{this.name}}" > </a> <button id="allProductWishlistButton{{this._id}}"  onclick="addToWishlist('{{this._id}}')"  style="border: none;"><i id="allProduct{{this._id}}" class="las la-heart"></i></button>  </div>
+					<div class="content">
+						<h3><a href="/single-product/{{this._id}}">{{this.name}}-{{this.color}}</a></h3>
+						<div class="rating-tag " > <div class="stars-outer"><div id="allProducts{{this._id}}" style="width: {{this.totalRatingPercentage}};" class="stars-inner"></div></div> <span class="text-muted " style="margin-left: 1em;" id="allProductRating{{this._id}}">{{#if this.totalRating}}({{this.totalRating}}){{else}}(0){{/if}}</span> </div>
+						<p>{{this.category}}</p>
+						<span>
+							{{#if this.initialPrice}}
+												 <del class="text-secondary" style="font-weight: 400;">₹{{#priceComma this.initialPrice}}{{/priceComma}}</del>
+												{{/if}}
+							₹{{#priceComma this.price}}{{/priceComma}}</span> 
+						<span  style=" position: absolute;bottom: 0;right: 0;">  
+						<button  onclick="addToCart('{{this._id}}')" class="add-card" style="border: none;"><i class="las la-cart-plus"></i></button> 
+						
+						
+
+						
+						</span> 
+						</div>
+				</div>
+				
+			</div>
+			{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="choose-area pt-60 pb-70">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-sm-6">
+				<div class="choose-card"> <i class="flaticon-review"></i>
+					<h3>100% Satisfaction</h3>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="choose-card"> <i class="flaticon-shipped"></i>
+					<h3>Fast & Free Shipment</h3>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="choose-card"> <i class="flaticon-money"></i>
+					<h3>30 Days Money Back</h3>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="choose-card"> <i class="flaticon-offer"></i>
+					<h3>Special Offer & Discount</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="new-product-area pb-70" id="new-products">
+	<div class="container">
+		<div class="section-title" >
+			<h2>New Product</h2>
+			<a href="#all-products" class="view-btn">View All</a> </div>
+		<div class="row pt-45">
+			
+				<div class="row">
+					{{#each newProducts}}
+					<div class="col-lg-3 col-sm-6">
+						<div class="new-product-card">
+							<div class="new-product-img"> <a href="/single-product/{{this._id}}"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images"> </a> </div>
+							<div class="content">
+								<h3><a href="/single-product/{{this._id}}">{{this.name}}-{{this.color}}</a></h3>
+								<p>{{this.category}}</p>
+								<span>
+									{{#if this.initialPrice}}
+												 <del class="text-secondary" style="font-weight: 400;">₹{{#priceComma this.initialPrice}}{{/priceComma}}</del>
+												{{/if}}
+									
+									₹{{#priceComma this.price}}{{/priceComma}}</span> <button  onclick="addToCart('{{this._id}}')" class="add-card" style="border: none;"><i class="las la-cart-plus"></i></button>  </div>
+						</div>
+					</div>
+					{{/each}}
+				
+			
+		</div>
+	
+	
+</div>
+	</div>
+</div>
+
+ 
+
+
+
+<script>
+	
+
+
+	window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted || 
+                         ( typeof window.performance != "undefined" && 
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload(true);
+  }
+});
+		
+	let topDeals={{{topDealsJson}}}
+		let product ={{{productJson}}}
+	let wishlistitem={{{wishlistItemJson}}}
+
+	
+	console.log(topDeals)
+	for(k=0;k<topDeals.length;k++){
+		if(topDeals[k].nameLength>43 && topDeals[k].nameLength <=50){
+			let h3=document.getElementById("topdeals"+topDeals[k]._id)
+			h3.setAttribute("class","top-deals-sm-char")
+			console.log(topDeals[k].product.name)
+			
+			
+			
+
+
+		}
+		
+
+		
+	}
+
+    let icon
+	let icon1
+	let icon2
+	let button
+	let button1
+	for(i=0;i<product.length;i++){
+		
+		
+		
+		for (j=0;j<wishlistitem.length;j++){
+			 if(product[i]._id===wishlistitem[j].item){
+				 if(product[i].initialPrice){
+					 icon2= document.getElementById('flashDeal'+wishlistitem[j].item)
+					 icon2.style.backgroundColor='rgb(13 183 26)'
+
+				 }
+
+				
+				icon= document.getElementById(wishlistitem[j].item)
+				button=document.getElementById('bestDealWishlistButton'+wishlistitem[j].item)
+				button1=document.getElementById('allProductWishlistButton'+wishlistitem[j].item)
+				button.onclick=(e)=>{
+					e.stopPropagation()
+				}
+				button1.onclick=(e)=>{
+					e.stopPropagation()
+				}
+				icon.style.backgroundColor='rgb(13 183 26)'
+				icon1= document.getElementById('allProduct'+wishlistitem[j].item)
+				
+				icon1.style.backgroundColor='rgb(13 183 26)'
+				
+				
+				
+		
+		 
+		 
+		 
+			   
+                  
+				
+
+			
+				
+			
+				
+			} 
+		}
+	}
+
+	
+	
+	
+</script>
+
+
+<script src="/js/add.js"></script>
+
+<script src="/js/jquery-3.5.1.slim.min.js"></script> 
+<script src="/js/bootstrap.bundle.min.js"></script> 
+<script src="/js/owl.carousel.min.js"></script> 
+<script src="/js/jquery.magnific-popup.min.js"></script> 
+<script src="/js/jquery.nice-select.min.js"></script> 
+<script src="/js/wow.min.js"></script> 
+<script src="/js/meanmenu.js"></script> 
+<script src="/js/slick.min.js"></script> 
+<script src="/js/jquery.ajaxchimp.min.js"></script> 
+<script src="/js/form-validator.min.js"></script> 
+<script src="/js/jquery.validate.js"></script> 
+<script src="/js/jquery-ui.min.js"></script> 
+<script src="/js/mixitup.min.js"></script> 
+<script src="/js/custom.js"></script>

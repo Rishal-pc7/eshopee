@@ -1,0 +1,174 @@
+
+ 
+  <link rel="stylesheet" href="/css/rating-star.css">
+    
+ <link rel="stylesheet" href="/css/bootstrap.min(pll).css">
+    <!-- animate CSS -->
+   
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/all(pll).css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/css/flaticon(pll).css">
+    <link rel="stylesheet" href="/css/themify-icons(pll).css">
+    <!-- font awesome CSS -->
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/css/style(pll).css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/wishlist-responsive.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+  
+   
+  <section class="cart_area section_padding">
+    <div class="container">
+      <div class="row">
+        {{#if products }}
+        <div class="col-12 col-sm-12 col-lg-12 col-md-12  ">
+      
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table" >
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">Product</th>
+              
+                <th scope="col" class="wishlist-head-price">Price</th>
+                <th></th>
+                
+                
+              </tr>
+            </thead>
+            
+            <tbody >
+              {{#each products}}
+              <tr id="{{this.product._id}}">
+                <td>
+                  <button onclick="removeWishlistItem('{{this.product._id}}')"
+                    class="btn btn-danger remove-wishlist">
+                      <i class="fa fa-times"></i>
+                      </button>
+                      
+                  
+                
+                <td  >
+                  <div class="media">
+                    <div class="d-flex">
+                      <img style="border: none;" src="/product-images/{{this.product._id}}/displayImage{{this.product._id}}.jpg" alt="" />
+                    </div>
+                    <div class="media-body">
+                     
+                      <p style=" margin-top: 1.5em;">{{this.product.name}}</p>
+                     
+                    </div>
+                        <div  class="wishlist-mobile-price"  style="margin-top: 1em;">
+                  <h5 class="text-muted"><i  class="fa fa-rupee" style="font-size:0.95em;padding-bottom: 1em;"></i> {{#priceComma this.product.price}}{{/priceComma}}</h5>
+                  </div>
+                    
+                  </div>
+                </td>
+                <td class="wishlist-desktop">
+                    <div style="margin-top: 2.5em;">
+                  <h5 ><span>{{#if this.product.initialPrice}}
+												 <del class="text-secondary" style="font-weight: 400;">₹{{#priceComma this.product.initialPrice}}{{/priceComma}}</del>
+												{{/if}}₹{{#priceComma this.product.price}}{{/priceComma}}</span></h5>
+                  </div>
+                </td>
+                <td  class="addtocart">
+                  
+              <button onclick="addToCart('{{this.product._id}}')" style="margin-top: 2.5em;border: none;" class="default-btn wishlist-cart-btn btn-bg-three">Add to Cart</button>
+                  
+                </td>
+               
+                
+              </td>
+              </tr>
+
+              
+
+              
+              
+              {{/each}}
+            </tbody >
+         
+            
+          </table>
+         
+        </div>
+        
+        </div>
+      </div>
+      {{else}}
+      <div class="col-md-12">
+            <div class="choose-card" style="align-items: center;">
+
+					<h4 class="empty-text">Wishlist is Empty</h4>
+           <a style="color: #fff;" href="/" class="continue-shopping-btn">Continue Shoppping</a>
+				</div>
+            </div>
+        </div>
+         </div>
+
+      {{/if}}
+      </div>
+
+    </div>
+    
+    
+   <div class="all-product-area pb-70">
+<div class="container">
+<div class="section-title" style="text-align: left;margin-bottom: 0;">
+<h2>Recommended Products for You</h2>
+</div>
+<div class="row pt-45">
+{{#each recomendedProducts}}
+{{#if this}}
+<div class="col-lg-4 col-md-6">
+<div class="all-product-item">
+<div class="row align-items-center">
+<div class="col-lg-5 col-sm-5 pr-0">
+<div class="all-product-img">
+<a href="/single-product/{{this._id}}">
+<img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images">
+</a>
+
+</div>
+</div>
+<div class="col-lg-7 col-sm-7">
+<div class="all-product-content">
+<h3><a href="/single-product/{{this._id}}" style="font-weight: 600;">{{this.name}}</a></h3>
+<div class="rating-tag"> <div class="stars-outer"><div id="allProducts{{this._id}}" style="width: {{this.totalRatingPercentage}};" class="stars-inner"></div></div> <span class="text-muted " style="margin-left: 1em;" id="allProductRating{{this._id}}">{{#if this.totalRating}}({{this.totalRating}}){{else}}(0){{/if}}</span> </div>
+<span class="">{{#if this.initialPrice}}
+												 <del class="text-secondary" style="font-weight: 400;">₹{{#priceComma this.initialPrice}}{{/priceComma}}</del>
+												{{/if}}₹{{#priceComma this.price}}{{/priceComma}} </span>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+{{/if}}
+{{/each}}
+
+</div>
+</div>
+</div> 
+  </section>
+   
+
+  <script src="/js/add.js"></script>
+    
+  
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+
+    <!-- custom js -->
+    <script src="/js/custom(pll).js"></script>
+    <script src="/js/custom.js"></script>
+

@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="/cssbootstrap.min.css">
+
+<link rel="stylesheet" href="/cssanimate.min.css">
+
+<link rel="stylesheet" href="/cssline-awesome.min.css">
+
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+
+<link rel="stylesheet" href="/css/rating-star.css">
+
+
+<link rel="stylesheet" href="/cssstyle.css">
+
+
+<link rel="stylesheet" href="/cssresponsive.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+            body{
+background:#eee;
+}                
+.ibox-content {
+    background-color: #FFFFFF;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #E7EAEC;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0px;
+}
+
+
+
+.search-result h3 a {
+    margin-bottom: 0;
+    color: #000;
+}
+
+.search-result .search-link  {
+    color: #006621;
+}
+
+.search-result .category {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+.search-result .price {
+    font-size: 1.5em;
+    color: #fb341f;
+    margin-bottom: 0;
+}
+
+.hr-line-dashed {
+    border-top: 1px dashed #E7EAEC;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 100;
+}
+
+                  
+</style>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <h2>
+                        {{#if_eq resultsLength 0}}No results found for: {{else}} Showing results for:{{/if_eq}}  <span class="text-navy">"{{proName}}"</span>
+                    </h2>
+                    
+        
+                    
+                    
+                    <div class="hr-line-dashed"></div>
+                    {{#if_eq resultsLength 0}}
+                    {{else}}
+                    {{#each results}}
+                    <div class="search-result">
+                        <div class="row">
+                            <div class="col-4"><img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" height="200" width="200" alt=""></div>
+                            <div class="col-8">
+                                 <h3><a href="/single-product/{{this._id}}">{{this.name}}</a></h3>
+                                 <p class="category">{{this.category}}</p>
+                        <div class="rating " style="font-size: 1.5em;"> <div class="stars-outer"><div id="mainRating" style="width: {{this.totalRatingPercentage}};" class="stars-inner"></div></div> <span class="text-muted" >  ({{this.totalRating}})</span> </div>
+                        
+                        <p class="price">
+                            {{#if this.initialPrice}}
+												 <del  style="color:#505458;" >₹{{#priceComma this.initialPrice}}{{/priceComma}}</del>
+												{{/if}}
+                            ₹{{#priceComma this.price}}{{/priceComma}}</p>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    {{/each}}
+                    
+                    
+                    
+                   
+                    {{/if_eq}}
+                </div>
+                {{#if_eq resultsLength 0}}
+                <div style="height: 15em;"></div>
+                {{else}}
+                <div class="ibox-content ">
+                    <h2> More results</h2>
+                    <div class="hr-line-dashed"></div>
+                    {{#each moreResults}}
+                    <div class="search-result">
+                        <div class="row">
+                            <div class="col-4"><img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" height="200" width="200" alt=""></div>
+                            <div class="col-8">
+                                 <h3><a href="/single-product/{{this._id}}">{{this.name}}</a></h3>
+                                 <p class="category">{{this.category}}</p>
+                        <div class="rating " style="font-size: 1.5em;"> <div class="stars-outer"><div id="mainRating" style="width: {{this.totalRatingPercentage}};" class="stars-inner"></div></div> <span class="text-muted" >  ({{this.totalRating}})</span> </div>
+                        
+                        <p class="price">
+                            {{#if this.initialPrice}}
+												 <del  style="color:#505458;" >₹{{#priceComma this.initialPrice}}{{/priceComma}}</del>
+												{{/if}}
+                            ₹{{#priceComma this.price}}{{/priceComma}}</p>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    {{/each}}
+                </div>
+                {{/if_eq}}
+            </div>
+        </div>
+    </div>
+</div>
+
+ <script>
+	let input=document.getElementById('productSearch')
+    input.value={{{proNameJson}}}
+  </script>
+
+  <script src="/js/custom.js"></script>

@@ -1,0 +1,240 @@
+/*========================================
+Author Name:   Electrolo
+Template Type: Personal Portfolio
+Brand Color:   #DC2814, #191919
+Icon:          Flat Icon, Font Awesome
+Text font:     Rubik
+Version:       v1.0.0
+-----------------------------
+
+Thanks for purchasing the template. I hope the template will come in handy. If you want to develop this template then you can contact me, I will develop you at a very reasonable price. In addition, I am available for any kind of support.
+
+By the way,
+Don't forgot your feedback or ratings.
+
+
+-----------------------------
+## TABLE OF LAYOUT STYLE
+-----------------------------
+01. NAVBAR
+02. CONTACT
+03. FOOTER 
+04. BANNER
+
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* --color--- */
+    --main-color: #DC2814;
+    --black-color: #191919;
+    --black-alt: #3a3a3a;
+    --dark-color: #6E6E6E;
+    --white-color: #ffffff;
+    --body-color: #F2F4F5;
+    --green-color: #1CCE4C;
+    --yellow-color: #F3C623;
+    /* --color end--- */
+    /*========== Font and typography ==========*/
+    --body-font: 'Rubik', sans-serif;
+    --biggest-font-size: 2.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    /*========== Margenes ==========*/
+    /* --margin--- */
+    --mr: .800em;
+    --mr-1: 1em;
+    --mr-2: 1.5em;
+    --mr-3: 2em;
+    /* --margin end--  */
+    /* --padding-- */
+    --pd: 800em;
+    --pd-1: 1em;
+    --pd-2: 1.5em;
+    --pd-3: 2em;
+    /* --padding end-- */
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+
+/*========== BASE ==========*/
+
+*,
+ ::before,
+ ::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #585858;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: var(--body-font);
+    line-height: 20px;
+    overflow-X: hidden;
+}
+
+img {
+    vertical-align: middle;
+    /* width: 100%; */
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+/* ============================GENERAL STYLE END======= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+span,
+label {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+table {
+    white-space: nowrap;
+}
+
+.custom-padding {
+    padding: 0 60px;
+}
+
+.custom-btn {
+    background: var(--main-color);
+    color: var(--white-color);
+    padding: 7px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    text-transform: uppercase;
+}
+
+.custom-btn:hover {
+    color: var(--white-color);
+    background: var(--black-color);
+}
+
+.custom-btn-alt {
+    background: var(--black-color);
+    color: var(--white-color);
+    padding: 7px 14px;
+    border-radius: 4px;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.custom-btn-alt:hover {
+    color: var(--white-color);
+    background: var(--main-color);
+}
+
+.pp-close-btn {
+    outline: none;
+    background: var(--main-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 8;
+}
+
+.btn-close:focus {
+    outline: 0;
+    box-shadow: none;
+    opacity: 1;
+}
+
+.cpy-8 {
+    padding-top: 80px;
+    padding-bottom: 60px;
+}
+
+.cpy-6 {
+    padding: 80px 0;
+}
+
+.cpb-6 {
+    padding-bottom: 80px;
+}
+
+.cpt-6 {
+    padding-top: 80px;
+}
+
+@media screen and (max-width:992px) {
+    .cpy-8 {
+        padding-top: 70px;
+        padding-bottom: 60px;
+    }
+    .cpy-6 {
+        padding: 70px 0;
+    }
+    .cpb-6 {
+        padding-bottom: 70px;
+    }
+    .cpt-6 {
+        padding-top: 70px;
+    }
+}

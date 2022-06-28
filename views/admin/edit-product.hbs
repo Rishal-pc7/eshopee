@@ -1,0 +1,122 @@
+ <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/avatar.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<section class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="text-center">Edit Product</h2>
+            <form action="/admin/edit-product?id={{product._id}}" method="post" enctype="multipart/form-data" >
+                <label for="">Name</label>
+                <p class="text-muted"><span class="text-danger">*</span> This name will be displayed in user page so please write the specifications and brand (min:15 and max:50)</p>
+                <input type="text" name="name" class="form-control" maxlength="42" value="{{product.name}}">
+
+                <label for="">Category</label>
+                <select name="category" id="" class="form-select"    >
+                    <option value="{{product.category}}"  selected hidden>{{product.category}}</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Computer">Computer</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Speakers">Speakers</option>
+                    <option value="Watches">Watches</option>
+                    <option value="Camera">Camera</option>
+                    <option value="TV">TV</option>
+                    <option value="Smart Products">Smart Products</option>
+                </select>
+
+                <label for="">Price</label>
+                <input type="text" name="price" class="form-control" value="{{product.price}}">
+
+                
+                <label>Warranty Policy</label>
+                <p class="text-muted">Write in yy/mm format (ie 5/06 for 5 years and 6 months)</p>
+                
+                <div class="row" style="margin-left: -10px;" >
+                    
+  <div class="col-4">
+    
+      
+      <input type="text" name="warrantyYr" class="form-control" value="{{product.warrantyYr}}" required>
+    
+  </div>
+  <div class="col-4" >
+      
+    
+      
+      <input type="text" class="form-control" name="warrantyMonth" value="{{product.warrantyMonth}}" required>
+   
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+                <label for="">Color</label>
+                <input type="text" name="color" placeholder=" "  value="{{product.color}}" class="form-control" required>
+                <label for="">Brand</label>
+                <input type="text" name="brand" placeholder=" "   class="form-control" value="{{product.brand}}" required>
+                
+                
+                <label for="">Detailed Specification</label>
+                {{#each specifications}}
+                <p class="text-muted">{{this.name}}</p>
+                <input type="text" name="specification{{this.name}}" placeholder=" " value="{{this.value}}"  class="form-control" >
+                {{/each}}
+                
+                 <label for="">About Product</label>
+                <p class="text-muted"><span class="text-danger">*</span>Write about in sentences Not Less Than 5 sentences</p>
+                   <input type="text" name="aboutPoint1" placeholder=" " value="{{product.aboutPoint1}}" class="form-control" required>
+                <input type="text" name="aboutPoint2" placeholder=" " value="{{product.aboutPoint2}}" class="form-control" required>
+                <input type="text" name="aboutPoint3" placeholder=" " value="{{product.aboutPoint3}}" class="form-control" required>
+                <input type="text" name="aboutPoint4" placeholder=" " value="{{product.aboutPoint4}}" class="form-control" required>
+                <input type="text" name="aboutPoint5" placeholder=" " value="{{product.aboutPoint5}}" class="form-control" required>
+
+                 <label for="">Description</label>
+                <p class="text-muted"><span class="text-danger">*</span> Not Less Than 50 characters</p>
+                <input type="text" name="description" placeholder=" " minlength="50"value="{{product.description}}" class="form-control" >
+
+
+
+                <label for="">Display Image</label>
+                <p class="text-muted"><span class="text-danger">*</span> Please upload an image with 400x400 and a white background</p>
+                <img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" width="150" height="150" alt="" id="imgView">
+                <input  onchange="viewImage(event)"   type="file" name="displayImage" class="form-control mb-4 " placeholder="" >
+                <label for="">Side Image</label>
+                
+                <img src="/product-images/{{product._id}}/sideImage{{product._id}}.jpg" width="150" height="150" alt="" id="sideImgView">
+                <input  onchange="viewSideImage(event)"   type="file" name="sideImage" class="form-control mb-4 " placeholder="" >
+                <label for="">Back Image</label>
+               
+                <img src="/product-images/{{product._id}}/backImage{{product._id}}.jpg" width="150" height="150" alt="" id="backImgView">
+                <input   onchange="viewBackImage(event)"  type="file" name="backImage" class="form-control mb-4 " placeholder="" >
+
+                <button class="btn btn-success  mt-5 " style="margin-top: 15px;" type="submit">Edit Product</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+
+ 
+        
+    function viewImage(event){
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+        
+    }
+    function viewSideImage(event){
+        document.getElementById('sideImgView').src=URL.createObjectURL(event.target.files[0])
+        
+    }
+    function viewBackImage(event){
+        document.getElementById('backImgView').src=URL.createObjectURL(event.target.files[0])
+        
+    }
+</script>

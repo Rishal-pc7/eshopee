@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/avatar.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+  <div class="navbar-area" id="navbar-area">
+
+
+
+	<div class="main-nav">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light "> <a class="navbar-brand" href="/"> <h3 style="color: #fb341f;"><svg xmlns="http://www.w3.org/2000/svg" style="height: 28px;margin-top: -.2em;" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M25.71,228.16l.35-.48c0,.16,0,.32-.07.48Zm460.58,15.51c0-44-7.76-84.46-28.81-122.4C416.5,47.88,343.91,8,258.89,8,119,7.72,40.62,113.21,26.06,227.68c42.42-61.31,117.07-121.38,220.37-125,0,0,109.67,0,99.42,105H170c6.37-37.39,18.55-59,34.34-78.93-75.05,34.9-121.85,96.1-120.75,188.32.83,71.45,50.13,144.84,120.75,172,83.35,31.84,192.77,7.2,240.13-21.33V363.31C363.6,419.8,173.6,424.23,172.21,295.74H486.29V243.67Z"/></svg> <span style="margin-left: -.2em;">Shopee</span></h3> </a>
+				<div class="collapse navbar-collapse " id="navbarSupportedContent">
+					<ul class="navbar-nav m-auto">
+						<li class="nav-item"> <a href="/admin" class="nav-link " id="home"> Home  </a>
+
+						</li>
+                        <li class="nav-item"> <a href="/admin/all-users" class="nav-link "id="all-users" > All Users  </a>
+
+						</li>
+                        <li class="nav-item"> <a href="/admin/all-orders" class="nav-link "id="all-orders"> All Orders  </a>
+
+						</li>
+
+                          </ul>
+                       
+
+						
+					
+					<div class="navbar-category">
+						<ul class="navbar-nav">
+							{{#if adminData}}
+								
+								 
+                                 <li class="nav-item-link "> <a href="#" class="nav-link-item admin_avatar"> <span style="top: 1px !important;margin-right: 1em !important;" class="avatar"><p id="avatar__letters" style="font-size: 1.5em;">{{#returnOnlyZeroindex adminData.name}}{{/returnOnlyZeroindex}}</p></span>  </a>
+							<ul class="dropdown-menu ">
+								
+								<li class="nav-item-link "> <a href="/admin/logout" class="nav-link-item"> Logout </a> </li>
+								
+							</ul>
+						</li>
+
+
+								 {{/if}}
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+</div>
+
+<script>
+	function getLogout(){
+
+	}
+
+</script>
+
+ <script>
+	 
+	 let id
+	 let pathname=location.pathname
+	 let pathSplit
+	 let arr=[]
+	 let specialChars="-"
+	 for(i = 0; i < specialChars.length;i++){
+   if(pathname.indexOf(specialChars[i]) > -1){
+      
+	  
+	  pathSplit=pathname.split('-')
+
+    }
+ }
+
+ console.log(pathSplit)
+	
+	
+	 if(pathname === '/admin/all-users'){
+		 document.getElementById('all-users').setAttribute('class','nav-link active')
+
+	 }else if(pathname === '/admin/all-orders'){
+		 document.getElementById('all-orders').setAttribute('class','nav-link active')
+
+	 }
+	 
+	 else if(pathname === '/admin' || pathSplit.indexOf('/admin/add') > -1 || pathSplit.indexOf('/admin/edit') > -1 || pathSplit.indexOf('/admin/offer') > -1 ){
+		 
+		 document.getElementById('home').setAttribute('class','nav-link active')
+		 
+	 }else if(pathname === '/admin/login'){
+		 document.getElementById('home').setAttribute('class','nav-link')
+
+	 }
+	 else if(pathSplit.indexOf('order') > -1 || pathSplit.indexOf('delivery') > -1 ){
+		 console.log(pathSplit)
+		 document.getElementById('all-orders').setAttribute('class','nav-link active')
+
+	 }
+ </script>
+
+			
+	
+
+
+<script src="/js/navbar.js"></script>
+
+
+<script src="/js/jquery-3.5.1.slim.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/wow.min.js"></script>
+<script src="/js/meanmenu.js"></script>
+<script src="/js/slick.min.js"></script>
+<script src="/js/jquery.ajaxchimp.min.js"></script>
+<script src="/js/form-validator.min.js"></script>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/mixitup.min.js"></script>
+<script src="/js/custom.js"></script>

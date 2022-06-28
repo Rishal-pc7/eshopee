@@ -1,0 +1,250 @@
+ <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/avatar.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   
+
+<section class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="text-center">Add Product</h2>
+            <h4 class="text-muted"><span class="text-danger">*</span> Fill all Fields</h4>
+            <form onsubmit="getNames()" id="addProductForm" action="/admin/add-product" method="post" enctype="multipart/form-data" >
+                <label for="">Name</label>
+                <p class="text-muted"><span class="text-danger">*</span> This name will be displayed in user page so  write the necessary  specifications and brand (min:15 and max:50)</p>
+                <input id="name" type="text" name="name" placeholder=" " minlength="15" maxlength="42" class="form-control" required>
+
+                <label for="">Category</label>
+                
+                <select name="category" id="" class="form-select" required   >
+                    <option value="" disabled selected hidden>Please Choose...</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Computer">Computer</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Speakers">Speakers</option>
+                    <option value="Watches">Watches</option>
+                    <option value="Camera">Camera</option>
+                    <option value="TV">TV</option>
+                    <option value="Smart Products">Smart Products</option>
+                </select>
+                
+
+                <label for="">Price</label>
+                <input type="text" name="price" class="form-control" required>
+                <label>Warranty Policy</label>
+                <p class="text-muted">Write in yy/mm format (ie 5/06 for 5 years and 6 months) Initial value 0</p>
+                
+                <div class="row" style="margin-left: -10px;" >
+                    
+  <div class="col-4">
+    
+      
+      <input type="text" name="warrantyYr" class="form-control" value="0" required>
+    
+  </div>
+  <div class="col-4" >
+      
+    
+      
+      <input type="text" class="form-control" name="warrantyMonth" value="0" required>
+   
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+
+                <label >Color</label>
+                <input type="text" name="color" placeholder=" "   class="form-control" required>
+                <label>Brand</label>
+                <input type="text" name="brand" placeholder=" "   class="form-control" required>
+                
+                <div class="row" style="margin-left: -10px; margin-top: .5em;" id="requiredDiv">
+                <div class="col-8">
+                <label >Detailed Specification</label>
+                <p class="text-muted" >Add the important specifications name and value</p>
+                </div>
+                <div class="col-4" style="float: right;">
+                 <button onclick="specificationAdd()" class="btn btn-success" style="float: right;" >+</button>
+                 </div>
+                 <div id="specfications">
+
+                 </div>
+                 </div>
+                
+                
+                 <label for="">About Product</label>
+                <p class="text-muted"><span class="text-danger">*</span>Write Qualities in sentences(5 sentences)</p>
+                <input type="text" name="aboutPoint1" placeholder=" "  class="form-control" required>
+                <br>
+                <input type="text" name="aboutPoint2" placeholder=" "  class="form-control" required>
+                <br>
+                <input type="text" name="aboutPoint3" placeholder=" "  class="form-control" required>
+                <br>
+                <input type="text" name="aboutPoint4" placeholder=" "  class="form-control" required>
+                <br>
+                <input type="text" name="aboutPoint5" placeholder=" "  class="form-control" required>
+                
+                 <label for="">Description</label>
+                <p class="text-muted"><span class="text-danger">*</span> Not Less Than 50 characters</p>
+                <input type="text" name="description" placeholder=" " minlength="50" class="form-control" required>
+
+
+
+                <label for="">Display Image</label>
+                <p class="text-muted"><span class="text-danger">*</span> Please upload an image with 400x400 and a white background</p>
+                <input    type="file" name="displayImage" class="form-control mb-4 " placeholder="" required>
+                <label for="">Side Image</label>
+                
+                <input    type="file" name="sideImage" class="form-control mb-4 " placeholder="" required>
+                <label for="">Back Image</label>
+                
+                <input    type="file" name="backImage" class="form-control mb-4 " placeholder="" required>
+
+                <button  class="btn btn-success  mt-5 " style="margin-top: 15px;" type="submit">Add Product</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('#addProductForm').submit((e)=>{
+        let requiredDiv=document.getElementById('requiredDiv')
+        
+    })
+    let execute=false
+       function getNames(){
+           var arrayOfInputNames,elmts,L;
+           if(!execute){
+               execute=true
+  elmts = document.getElementById("addProductForm");
+  
+
+
+  arrayOfInputNames = [];
+
+  L = elmts.length;
+
+  for (var i = 0; i < L; i++) {
+    console.log("i: " + i);
+    console.log("value: " + elmts[i].name);
+    
+    arrayOfInputNames.push(elmts[i].name);
+  }
+
+  
+  let input =document.createElement('input')
+  let input1 =document.createElement('input')
+  const results = arrayOfInputNames.filter(element => {
+  return element !== "";
+});
+
+   console.log(results)
+   let specifications=[]
+for(i=0;i<results.length;i++){
+    if(results[i].indexOf('specification') != -1){
+        console.log(results[i])
+        let obj={
+            name:results[i],
+            position:i,
+            value:document.getElementById(results[i]).value
+        }
+        console.log(obj)
+        specifications.push(obj)
+    }
+}
+  let  specificationsJson=JSON.stringify(specifications)
+  let  inputNameJson=JSON.stringify(results)
+  input1.setAttribute('value',specificationsJson)
+  input1.setAttribute('name',"specifications")
+  input1.style.display='none'
+  elmts.appendChild(input1)
+  input.setAttribute('value',inputNameJson)
+  input.setAttribute('name',"inputNames")
+  input.style.display='none'
+  elmts.appendChild(input)
+
+  }
+       }
+       
+        
+
+    
+    function specificationAdd(){
+        
+        
+        
+        let parent=document.getElementById('specfications')
+        let div=document.createElement('div')
+        
+       
+
+        let p =document.createElement('p')
+        p.setAttribute('class','text-muted')
+        p.innerHTML='<span class="text-danger">*</span>This name cannot be changed'
+        
+        let input = document.createElement('input')
+        input.setAttribute('type','text')
+        input.setAttribute('class','form-control')
+        input.setAttribute('name','specifications')
+        input.setAttribute('placeholder','Specification name')
+        input.setAttribute('id','specificationName')
+        input.setAttribute('required',"")
+        let div1=document.createElement('div')
+        div1.setAttribute('class',"input-group")
+        div.setAttribute('id',"specificationNameDiv")
+        div.appendChild(p)
+        div1.appendChild(input)
+        let span=document.createElement('span')
+        span.setAttribute('class','input-group-addon btn btn-success')
+        
+        span.setAttribute('onclick','setInput()')
+        
+        span.style.backgroundColor="#449d44"
+        span.style.color="#fff"
+        span.style.height='2.5em'
+        div.style.marginTop="1em"
+        
+        div.style.marginBottom="1em"
+        
+        span.innerHTML='+'
+        
+
+        div1.appendChild(span)
+        div.appendChild(div1)
+
+        parent.appendChild(div)
+
+    }
+    function setInput(){
+        let parent=document.getElementById('specfications')
+        let specificationName=document.getElementById('specificationName').value
+        let specificationNameDiv=document.getElementById('specificationNameDiv')
+        
+        specificationName.charAt(0).toUpperCase() + specificationName.slice(1);
+
+        parent.removeChild(specificationNameDiv)
+        let div=document.createElement('div')
+        let p =document.createElement('p')
+        p.setAttribute('class','text-muted')
+        p.innerHTML=specificationName
+        let input=document.createElement('input')
+        input.setAttribute('class','form-control')
+        input.setAttribute('id','specification'+specificationName)
+        input.setAttribute('name','specification'+specificationName)
+        parent.appendChild(div)
+        div.appendChild(p)
+        div.appendChild(input)
+
+    }
+</script>

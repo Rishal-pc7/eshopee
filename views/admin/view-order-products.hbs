@@ -1,0 +1,39 @@
+ <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/avatar.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+
+
+<div class="page-inner pt-100 pb-70">
+	<div class="container">
+		<div class="row">
+      {{#each products}}
+			<div class="col-lg-6">
+				<div class="page-inner-item">
+					<div class="row align-items-center">
+						<div class="col-lg-6 col-sm-6">
+							<div class="content">
+								<h3>{{this.product.name}}-{{this.product.color}} </h3>
+								<span><i class="las la-rupee-sign"></i> {{#priceComma this.product.price}}{{/priceComma}}</span> <button style="border: 0;" class="default-btn border-radius-5"  onclick="">Quantity : {{this.quantity}}</button> </div>
+						</div>
+						<div class="col-lg-6 col-sm-6">
+							<div class="page-inner-img"> <img src="/product-images/{{this.product._id}}/displayImage{{this.product._id}}.jpg" alt="Images"> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</div>

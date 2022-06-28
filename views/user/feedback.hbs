@@ -1,0 +1,121 @@
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.min.css">
+<link rel="stylesheet" href="/css/line-awesome.min.css">
+<link rel="stylesheet" href="/fonts/flaticon.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0-8/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/rating-star.css">
+<link rel="stylesheet" href="/css/cart-responsive.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div class="contact-form-area pt-100 pb-70">
+	<div class="container">
+		<div class="contact-form-title text-center">
+			<h2>We are Available to Help You</h2>
+			<p> Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
+				Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
+		</div>
+		<div class="row pt-45">
+			<div class="col-lg-12">
+				<div class="contact-form">
+					<form id="contactForm" name="contactForm" action="">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label>Your Name <span>*</span></label>
+									<input type="text" name="name" id="name" class="form-control" data-error="Please Enter Your Name" placeholder="Name" required>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label>Your Email <span>*</span></label>
+									<input type="email" name="email" id="email" class="form-control" data-error="Please Enter Your Email" placeholder="Email" required>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label>Phone Number <span>*</span></label>
+									<input type="text" name="phone_number" id="phone_number" data-error="Please Enter Your number" class="form-control" placeholder="Phone Number"required>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label>Your Subject <span>*</span></label>
+									<input type="text" name="msg_subject" id="msg_subject" class="form-control" data-error="Please Enter Your Subject" placeholder="Your Subject" >
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12">
+								<div class="form-group">
+									<label>Your Message <span>*</span></label>
+									<textarea name="message" class="form-control" id="message" cols="30" rows="8" data-error="Write your message" placeholder="Your Message"  required></textarea>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12">
+								<div class="agree-label">
+									<input type="checkbox" id="chb1" name="chb1" required>
+									<label for="chb1"> Accept <a href="terms-condition.html">Terms & Conditions</a> And <a href="privacy-policy.html">Privacy Policy.</a> </label><br/>
+									<label for="chb1" class="error" style="display:none;">Please Accept Terms &amp; Condition</label>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 text-center">
+							<div class="form-response"></div>
+							
+                                {{#if err}}
+								<div id='message1'>
+									<div class="alert alert-danger" role="alert"><strong> Error !</strong> Message Could not be sent, please try later !</div>
+								</div>
+                                {{else}}
+                                	<div id='message1'>
+									<div class="alert alert-success" role="alert"><strong>Thank You !</strong> Your Details Submission Successfully!</div>
+								</div>
+                                {{/if}}
+								<button type="submit" id="submit" class="default-btn border-radius-5"> Send Message </button>
+								
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	   $("#contactForm").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbxVJCC_so71klty_9ugUI33kt_vQ_s2xBpybGue/exec",
+                data:$("#contactForm").serialize(),
+                method:"post",
+                success:function (response){
+                    
+                    window.location.href='/feedback-submitted'
+                    
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+</script>
+ <script src="/js/jquery.min.js"></script>
+    <!-- ===========bootstrap========= -->
+    <script src="/js/bootstrap.bundle.min(elc).js"></script>
+    <!-- ===========owl carousel========= -->
+<script src="/js/add.js"></script>
+
+
+<script src="/js/jquery-3.5.1.slim.min.js"></script> 
+<script src="/js/bootstrap.bundle.min.js"></script> 
+<script src="/js/custom.js"></script>

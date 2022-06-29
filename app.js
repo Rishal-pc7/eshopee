@@ -93,7 +93,7 @@ app.use(session({
   secret:"Key",
   cookie:{maxAge:31*24*3600000},
   store: MongoStore.create({
-    mongoUrl: 'mongodb://localhost/ustora',
+    mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/ustora',
     autoRemove: 'disabled'
   })
   

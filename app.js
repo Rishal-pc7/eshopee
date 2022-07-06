@@ -7,6 +7,7 @@ var session=require('express-session')
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
 var hbs=require('express-handlebars')
+require('dotenv').config()
 var app = express();
 var fileupload=require('express-fileupload')
 var db=require('./config/connection')

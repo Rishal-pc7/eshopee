@@ -1,9 +1,9 @@
 var db=require('../config/connection')
 var collection=require('../config/collections')
-var bcrypt=require('bcrypt')
+var bcrypt=require('bcryptjs')
 const { response } = require('express')
 
-var objectId=require('mongodb').ObjectID
+var objectId=require('mongodb').ObjectId
 const Razorpay=require('razorpay')
 const { resolve } = require('path')
 var instance = new Razorpay(
@@ -505,9 +505,9 @@ module.exports={
                 
             }
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-                db.get().collection(collection.CART_COLLECTION).removeOne({user:objectId(order.userId)})
+                db.get().collection(collection.CART_COLLECTION).deleteOne({user:objectId(order.userId)})
 
-                resolve(response.ops[0]._id)
+                resolve(response.insertedId)
             })
         })
     },

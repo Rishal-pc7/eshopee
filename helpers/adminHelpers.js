@@ -1,6 +1,6 @@
 var db=require('../config/connection')
 var collection=require('../config/collections')
-var bcrypt=require('bcrypt')
+var bcrypt=require('bcryptjs')
 const { response } = require('express')
 
 
@@ -8,6 +8,7 @@ var objectId=require('mongodb').ObjectID
 
 
 module.exports={
+    
 
 
 doLogin:(data)=>{

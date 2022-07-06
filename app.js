@@ -7,6 +7,7 @@ var session=require('express-session')
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
 var hbs=require('express-handlebars')
+require('dotenv').config()
 var app = express();
 var fileupload=require('express-fileupload')
 var db=require('./config/connection')
@@ -93,7 +94,7 @@ app.use(session({
   secret:"Key",
   cookie:{maxAge:31*24*3600000},
   store: MongoStore.create({
-    mongoUrl: 'mongodb://localhost/ustora',
+    mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/ustora',
     autoRemove: 'disabled'
   })
   

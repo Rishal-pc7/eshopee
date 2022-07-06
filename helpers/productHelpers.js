@@ -65,7 +65,7 @@ module.exports={
         product.totalRatingPercentage='0%'
         db.get().collection(collection.PRODUCT_COLLECTION).insertOne(product).then((data)=>{
             
-            callback(data.ops[0]._id)
+            callback(data.insertId)
         })
 
     },
@@ -90,8 +90,8 @@ module.exports={
                      categories:categoriesArr
                  }
                  db.get().collection(collection.CATEGORY_COLLECTION).insertOne(categoriesObj).then((data)=>{
-                     resolve(data.ops[0])
-                     console.log(data.ops[0]);
+                     resolve(data)
+                    
                  })
                 }
             
@@ -316,7 +316,7 @@ module.exports={
     deleteProduct:(proId)=>{
 
         return new Promise((resolve,reject)=>{
-            db.get().collection(collection.PRODUCT_COLLECTION).removeOne({_id:objectId(proId)}).then((response)=>{
+            db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({_id:objectId(proId)}).then((response)=>{
                 console.log(response)
                 resolve(response)
             })
@@ -534,7 +534,7 @@ module.exports={
                 }
             })
             .then((response)=>{
-                db.get().collection(collection.OFFER_COLLECTION).removeOne({proId:objectId(proId)}).then((res)=>{
+                db.get().collection(collection.OFFER_COLLECTION).deleteOne({proId:objectId(proId)}).then((res)=>{
                     resolve(response)
                 })
                 
@@ -595,7 +595,7 @@ module.exports={
             }else{
                 reviews.reviewDetails.push(reviewDetails)
                 db.get().collection(collection.RATING_COLLECTION).insertOne(reviews).then((data)=>{
-                    resolve(data.ops[0])
+                    resolve(data)
                     
     
                 })
@@ -980,7 +980,7 @@ if(checkForSpecialChar(proName)){
                             }
                         }).then((response)=>{
                             
-                            db.get().collection(collection.OFFER_COLLECTION).removeOne({proId:objectId(trueObj[j].proId)}).then((res)=>{
+                            db.get().collection(collection.OFFER_COLLECTION).deleteOne({proId:objectId(trueObj[j].proId)}).then((res)=>{
                                 console.log(res)
 
                             })

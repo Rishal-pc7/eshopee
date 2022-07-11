@@ -89,7 +89,7 @@ router.get('/add-product', verifyLogin,function(req, res, next){
     let displayImage=req.files.displayImage
     let sideImage=req.files.sideImage
     let backImage=req.files.backImage
-    fs.mkdirSync('./public/product-images/'+id)
+    fs.mkdirSync('./public/product-images/'+id,{recursive:true})
     
      displayImage.mv('./public/product-images/'+id+'/displayImage'+id+".jpg",async(err,done)=>{
       

@@ -65,7 +65,7 @@ module.exports={
         product.totalRatingPercentage='0%'
         db.get().collection(collection.PRODUCT_COLLECTION).insertOne(product).then((data)=>{
             
-            callback(data.insertId)
+            callback(data.insertedId)
         })
 
     },

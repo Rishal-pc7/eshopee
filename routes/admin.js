@@ -23,6 +23,7 @@ const verifyLogin=function (req,res, next){
 router.get('/',verifyLogin, function(req, res, next) {
  
   productHelpers.getAllProducts().then((products)=>{
+    
     res.render('admin/view-products',{products,admin:true,adminData:req.session.admin,add:true})
 
   })
@@ -83,12 +84,12 @@ router.get('/add-product', verifyLogin,function(req, res, next){
 
 })
  router.post('/add-product',(req,res)=>{
-   console.log(req.body);
+  
    
-   productHelpers.addProducts(req.body,async (id)=>{
+   
+     let id=req.body.name
     let displayImage=req.files.displayImage
-    let sideImage=req.files.sideImage
-    let backImage=req.files.backImage
+    
     fs.mkdirSync('./public/product-images/'+id,{recursive:true})
     
      displayImage.mv('./public/product-images/'+id+'/displayImage'+id+".jpg",async(err,done)=>{
@@ -122,34 +123,12 @@ router.get('/add-product', verifyLogin,function(req, res, next){
     
        if(!err){
 
-        sideImage.mv('./public/product-images/'+id+'/sideImage'+id+".jpg",async(err,done)=>{
-          
         
-          if(!err){
+        req.body.img=fs.readFileSync('./public/product-images/'+id+'/displayImage'+id+".jpg", 'base64');
+        productHelpers.addProducts(req.body,async (id)=>{
 
-            backImage.mv('./public/product-images/'+id+'/backImage'+id+".jpg",async(err,done)=>{
-              
-        
-        
-              if(!err){
-                res.redirect('/admin')
-               
-               
-       
-              }else{
-                console.log(err)
-              }
-       
-            })
-           
-           
-   
-          }else{
-            console.log(err)
-          }
-   
-        })
-        
+        res.redirect('/admin')
+      })  
 
        }else{
          console.log(err)
@@ -158,36 +137,15 @@ router.get('/add-product', verifyLogin,function(req, res, next){
      })
      
 
-   })  
+   
    
  })
  router.get('/delete-product', function(req, res, next){
  productHelpers.deleteProduct(req.query.id).then((response)=>{
-   if(response){
-     var directory='./public/product-images/'+req.query.id
-     if(directory){
-    fs.readdir(directory, (err, files) => {
-      if (err) throw err;
-    
-      for (const file of files) {
-        fs.unlink(path.join(directory, file), err => {
-          if (err) throw err;
-          
-        });
-      }
-      
-
-    });
-    fs.rmdir(directory, { recursive: true }, (err) => {
-      if (err) {
-          throw err;
-      }
   
-      console.log(`${directory} is deleted!`);
-  });
-}
+     
      res.redirect('/admin')
-   }
+   
 
  })
 
@@ -203,17 +161,17 @@ router.get('/edit-product',verifyLogin, function(req, res, next){
  })
  router.post('/edit-product',async function(req, res, next){
   let specifications=await productHelpers.getSpecifications(req.query.id)
-  productHelpers.updateDetails(req.query.id,req.body,specifications).then(async(response)=>{
-    
+  
+  
+    let img
 
-    
+    fs.mkdirSync('./public/product-images/'+req.query.id,{recursive:true})
     
     
     if(req.files){
       
     let displayImage=req.files.displayImage
-    let sideImage=req.files.sideImage
-    let backImage=req.files.backImage
+    
    
     if(displayImage){
       
@@ -231,18 +189,22 @@ router.get('/edit-product',verifyLogin, function(req, res, next){
         type: "auto",
         
         
-        outputFile:'./public/product-images/'+req.query.id+'/displayImage'+req.query.id+".jpg"
+        outputFile:file
 
       }).then(async(result) => {
-        console.log('Hi')
+       
         
       
         const base64img = result.base64img;
         
-        base64img.mv('./public/product-images/'+req.query.id+'/displayImage'+req.query.id+".jpg").then(async()=>{
-         
-
+        req.body.img=base64img
+        productHelpers.updateDetails(req.query.id,req.body,specifications).then(async(response)=>{
+  
+    
+          res.redirect('/admin')
+        
         })
+       
         
       
         
@@ -250,13 +212,16 @@ router.get('/edit-product',verifyLogin, function(req, res, next){
         
       console.log(JSON.stringify(errors));
       });
-      const image = await resizeImg(fs.readFileSync('./public/product-images/'+req.query.id+'/displayImage'+req.query.id+".jpg"), {
-        width: 400,
-        height: 400
-    });
-   fs.writeFileSync('./public/product-images/'+req.query.id+'/displayImage'+req.query.id+".jpg",image)
+    
       })
+        
+        
+
      
+    
+     
+ 
+
 
     
       
@@ -268,24 +233,25 @@ router.get('/edit-product',verifyLogin, function(req, res, next){
    
      
     }
-    if(sideImage){
-       
-     
-      sideImage.mv('./public/product-images/'+req.query.id+'/sideImage'+req.query.id+".jpg")
-     
-    }
-    if(backImage){
-       
-     
-      backImage.mv('./public/product-images/'+req.query.id+'/backImage'+req.query.id+".jpg")
-     
-    }
-  }
+  
     
-  })
+  }
+
+  
+  else{
+    productHelpers.updateDetails(req.query.id,req.body,specifications).then(async(response)=>{
+  
+    
+      res.redirect('/admin')
+    
+    })
+
+  }
+  
+
   
  
-    res.redirect('/admin')
+    
    
   
  

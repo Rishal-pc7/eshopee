@@ -510,9 +510,17 @@ module.exports={
         }
         console.log(product[name[0]])
         for(i=0;i<name.length;i++){
-                    
+                 let img   
 
            let products=await db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:objectId(proId)})
+           
+           if(product.img){
+               
+               img=product.img
+
+           }else{
+               img=products.img
+           }
             db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:objectId(proId)},{
                 $set:{
                     name:product.name,
@@ -524,6 +532,7 @@ module.exports={
                     color:product.color,
                     brand:product.brand,
                     initialPrice:null,
+                    img:img,
                     [name[i]]:product[name[i]],
                     
                    
@@ -897,6 +906,7 @@ if(checkForSpecialChar(proName)){
         return new Promise(async(resolve,reject)=>{
             let trueObj=[]
             let products=[]
+            
             for(i in offer){
                 var dateFuture = new Date(offer[i].offerStartDate)
             
@@ -972,6 +982,7 @@ if(checkForSpecialChar(proName)){
                     
                     
                     let products=await db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:objectId(trueObj[j].proId)})
+                    
                     db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:objectId(trueObj[j].proId)},
                         {
                             $set:{

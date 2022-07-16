@@ -32,16 +32,14 @@
 <div class="col-lg-6">
 <div class="shop-details-image">
 <ul class="shop-details-image-slides">
-<li><img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" alt="Images"></li>
-<li><img src="/product-images/{{product._id}}/sideImage{{product._id}}.jpg" alt="Images"></li>
-<li><img src="/product-images/{{product._id}}/backImage{{product._id}}.jpg" alt="Images"></li>
+<li><img src="data:image/jpeg;base64,{{product.img}}" alt="Images"></li>
+
 
 </ul>
 <div class="slick-thumbs">
 <ul class="shop-details-image-slides">
-<li><img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" alt="Images"></li>
-<li><img src="/product-images/{{product._id}}/sideImage{{product._id}}.jpg" alt="Images"></li>
-<li><img src="/product-images/{{product._id}}/backImage{{product._id}}.jpg" alt="Images"></li>
+<li><img src="data:image/jpeg;base64,{{product.img}}" alt="Images"></li>
+
 
 </ul>
 </div>
@@ -135,7 +133,7 @@ Reviews
 {{product.description}}
 </p>
 <div class="products-tabs-main-img">
-<img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" alt="Images">
+<img src="data:image/jpeg;base64,{{product.img}}" alt="Images">
 </div>
 
 <div class="product-tab-bottom">
@@ -576,7 +574,7 @@ Send
 <div class="col-lg-5 col-sm-5 pr-0">
 <div class="all-product-img">
 <a href="/single-product/{{this._id}}">
-<img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images">
+<img src="data:image/jpeg;base64,{{this.img}}" alt="Images">
 </a>
 
 </div>

@@ -48,8 +48,8 @@ Log Out
 <h2>Profile Details</h2>
 <div class="account-profile">
 <div class="account-profile-img">
-   
-    <img  id="proUserImg"  src="/user-images/{{user._id}}/{{user._id}}.jpg" >
+    
+    <img  id="proUserImg"  src="data:image/jpeg;base64,{{user.img}}" >
 
     
     <div style="display: none;" id="userAvatar" class="avatar1"><span id="avatar__letters">{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</span>
@@ -69,7 +69,7 @@ Log Out
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
-              <input type="file" name="proPic" class="form-control" required>
+              <input type="file" name="proPic" class="form-control" accept="image/jpeg" required>
         </div>
         </div>
         <div class="col-lg-4 col-md-6">
@@ -148,7 +148,7 @@ Confirm
 {{#each products.product}}
 <li>
     
-<img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images">
+<img src="data:image/jpeg;base64,{{this.img}}" alt="Images">
 <h3>{{this.name}}         <span class="ml-3" style="margin-left:2rem;">x{{this.quantity}}</span></h3>
 <span>₹{{this.price}}</span>
 <div style="right: 150px;top: 68px;" class="add-to-cart-div"><button onclick="addToCart('{{this._id}}')"  class="add-to-cart-btn btn-bg-three" >Add to Cart</button></div>
@@ -190,25 +190,36 @@ Confirm
 </div>
 
 <script>
-    let loaded=false
-    function addProfilePhoto(){
+    
+    
+    function addProfilePhoto(e){
         let form=document.getElementById('profile-photo')
         form.style.display='block'
 
     }
+    let img=document.getElementById('proUserImg')
+
+    if(img.complete){
+    
+
+                 document.getElementById('uploadPic').style.display='none'
+        document.getElementById('editPic').style.display='block'
+            
+        }
     $('#proUserImg').on('error',()=>{
         document.getElementById('proUserImg').style.display='none'
         document.getElementById('userAvatar').style.display='block'
         document.getElementById('removePic').style.display='none'
-        loaded=true  
+        
+        
         })
-        if(loaded){
-            console.log('Hi')
-        document.getElementById('uploadPic').style.display='none'
-        document.getElementById('editPic').style.display='block'
+        
+            
+            
+        
 
 
-        }
+        
     
     function removeProfilePhoto(userId){
         $.ajax({

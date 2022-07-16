@@ -86,16 +86,9 @@
 
                 <label for="">Display Image</label>
                 <p class="text-muted"><span class="text-danger">*</span> Please upload an image with 400x400 and a white background</p>
-                <img src="/product-images/{{product._id}}/displayImage{{product._id}}.jpg" width="150" height="150" alt="" id="imgView">
-                <input  onchange="viewImage(event)"   type="file" name="displayImage" class="form-control mb-4 " placeholder="" >
-                <label for="">Side Image</label>
+                <img src="data:image/jpeg;base64,{{product.img}}"  width="150" height="150" alt="" id="imgView">
+                <input  onchange="viewImage(event)"  accept="image/jpeg" type="file" name="displayImage" class="form-control mb-4 " placeholder="" >
                 
-                <img src="/product-images/{{product._id}}/sideImage{{product._id}}.jpg" width="150" height="150" alt="" id="sideImgView">
-                <input  onchange="viewSideImage(event)"   type="file" name="sideImage" class="form-control mb-4 " placeholder="" >
-                <label for="">Back Image</label>
-               
-                <img src="/product-images/{{product._id}}/backImage{{product._id}}.jpg" width="150" height="150" alt="" id="backImgView">
-                <input   onchange="viewBackImage(event)"  type="file" name="backImage" class="form-control mb-4 " placeholder="" >
 
                 <button class="btn btn-success  mt-5 " style="margin-top: 15px;" type="submit">Edit Product</button>
             </form>

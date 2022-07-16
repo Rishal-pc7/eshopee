@@ -43,7 +43,7 @@
 {{#if user}}
 
 <a href="/profile" id="profile-image" title="Profile" style="display: none;" >{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</a>
-<a href="/profile"  id="avatarImgMob" ><img id="userImgMob" class="avatar2" style="margin-left: 0;" src="/user-images/{{user._id}}/thumbImage{{user._id}}.jpg" alt=""></a>
+<a href="/profile"  id="avatarImgMob" ><img id="userImgMob" class="avatar2" style="margin-left: 0;" src="data:image/jpeg;base64,{{user.thumbImg}}" alt=""></a>
 {{else}}
 <a class="item las la-user-plus" title="login" href="/login"></a>
 {{/if}}
@@ -111,7 +111,7 @@
 
 								 {{/if}}
 						</ul>
-						<a href="/profile"  id="avatarImg" ><img id="userImg" class="avatar2" src="/user-images/{{user._id}}/thumbImage{{user._id}}.jpg" alt=""></a>
+						<a href="/profile"  id="avatarImg" ><img id="userImg" class="avatar2" src="data:image/jpeg;base64,{{user.thumbImg}}" alt=""></a>
 					</div>
 				</div>
 			</nav>

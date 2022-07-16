@@ -72,7 +72,7 @@
                 <td  >
                   <div class="media">
                     <div class="d-flex">
-                      <img style="border: none;" src="/product-images/{{this.product._id}}/displayImage{{this.product._id}}.jpg" alt="" />
+                      <img style="border: none;" src="data:image/jpeg;base64,{{this.product.img}}" alt="" />
                     </div>
                     <div class="media-body">
                      
@@ -189,7 +189,7 @@
 <div class="col-lg-5 col-sm-5 pr-0">
 <div class="all-product-img">
 <a href="/single-product/{{this._id}}">
-<img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images">
+<img src="data:image/jpeg;base64,{{this.img}}" alt="Images">
 </a>
 
 </div>

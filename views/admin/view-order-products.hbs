@@ -28,7 +28,7 @@
 								<span><i class="las la-rupee-sign"></i> {{#priceComma this.product.price}}{{/priceComma}}</span> <button style="border: 0;" class="default-btn border-radius-5"  onclick="">Quantity : {{this.quantity}}</button> </div>
 						</div>
 						<div class="col-lg-6 col-sm-6">
-							<div class="page-inner-img"> <img src="/product-images/{{this.product._id}}/displayImage{{this.product._id}}.jpg" alt="Images"> </div>
+							<div class="page-inner-img"> <img src="data:image/jpeg;base64,{{this.product.img}}" alt="Images"> </div>
 						</div>
 					</div>
 				</div>

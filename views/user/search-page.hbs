@@ -83,7 +83,7 @@ h2 {
                     {{#each results}}
                     <div class="search-result">
                         <div class="row">
-                            <div class="col-4"><img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" height="200" width="200" alt=""></div>
+                            <div class="col-4"><img src="data:image/jpeg;base64,{{this.img}}" height="200" width="200" alt=""></div>
                             <div class="col-8">
                                  <h3><a href="/single-product/{{this._id}}">{{this.name}}</a></h3>
                                  <p class="category">{{this.category}}</p>
@@ -117,7 +117,7 @@ h2 {
                     {{#each moreResults}}
                     <div class="search-result">
                         <div class="row">
-                            <div class="col-4"><img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" height="200" width="200" alt=""></div>
+                            <div class="col-4"><img src="data:image/jpeg;base64,{{this.img}}" height="200" width="200" alt=""></div>
                             <div class="col-8">
                                  <h3><a href="/single-product/{{this._id}}">{{this.name}}</a></h3>
                                  <p class="category">{{this.category}}</p>

@@ -47,9 +47,11 @@ router.get('/',async function(req, res, next) {
   let topDeals=await productHelpers.getTopDealProducts()
   let ratings=await productHelpers.getAllProductRatings()
   let offers=await productHelpers.getAllOffers()
-  
-  let activeOffers= await productHelpers.getActiveOffers(offers)
-  
+  let activeOffers
+  console.log("🚀 ~ file: user.js ~ line 50 ~ router.get ~ offers", offers)
+  if(offers[0]){
+  activeOffers= await productHelpers.getActiveOffers(offers)
+  }
   
   let ratingsJson
   if(ratings){
@@ -65,7 +67,7 @@ router.get('/',async function(req, res, next) {
   
   
     
-    
+    console.log(user)
   
     res.render('index', { products,user,count,userJson,productJson:JSON.stringify(products),wishlistCount,wishlistItemJson,categories,newProducts,bestDeals,topDeals,topDealsJson:JSON.stringify(topDeals),ratings,ratingsJson,mostRatedProduct,mostPricedProduct,activeOffers,mostOfferProducts});
     
@@ -248,6 +250,7 @@ router.post('/login',(req,res)=>{
     if(response.status){
       
       req.session.user=response.user
+      console.log("🚀 ~ file: user.js ~ line 253 ~ userHelpers.doLogin ~ response.user", response.user)
       req.session.user.loggedIn=true
       if(req.body.query){
         res.redirect(req.body.query)
@@ -290,6 +293,7 @@ router.get('/profile',verifyLogin,async (req,res)=>{
   res.render('user/profile',{user,profilePage:true,products,productJson:JSON.stringify(null),count,wishlistCount})
 })
 router.post('/addProfilePhoto',verifyLogin,async(req,res)=>{
+  let user=req.session.user
   if(req.files){
     let proPic=req.files.proPic
     req.session.userImg=false
@@ -312,7 +316,15 @@ router.post('/addProfilePhoto',verifyLogin,async(req,res)=>{
     });
       fs.writeFileSync('./public/user-images/'+req.body.userId+'/'+req.body.userId+'.jpg', image)
       fs.writeFileSync('./public/user-images/'+req.body.userId+'/thumbImage'+req.body.userId+'.jpg', thumbImage)
+      let thumbImageDB=fs.readFileSync('./public/user-images/'+req.body.userId+'/thumbImage'+req.body.userId+'.jpg', 'base64');
+      let proPicDB=fs.readFileSync('./public/user-images/'+req.body.userId+'/'+req.body.userId+'.jpg', 'base64');
+      userHelpers.addProfilePhoto(user._id,thumbImageDB,proPicDB).then((response)=>{
+        req.session.user.img=proPicDB
+        req.session.user.thumbImg=thumbImageDB
         res.redirect('/profile')
+
+      })
+        
       
       
       })
@@ -321,32 +333,20 @@ router.post('/addProfilePhoto',verifyLogin,async(req,res)=>{
     }
   }
 })
-router.post('/removeProfilePhoto',(req,res)=>{
+router.post('/removeProfilePhoto',verifyLogin,(req,res)=>{
   console.log(req.body)
-  var directory='./public/user-images/'+req.body.id
-  if(directory){
- fs.readdir(directory, (err, files) => {
-   if (err) throw err;
- 
-   for (const file of files) {
-     fs.unlink(path.join(directory, file), err => {
-       if (err) throw err;
-       
-     });
-   }
+  let user=req.session.user
+  userHelpers.removeProfilePhoto(user._id).then((response)=>{
+    req.session.user.img=null
+    req.session.user.thumbImg=null
+    res.json({status:true})
+  })
    
 
  });
- fs.rmdir(directory, { recursive: true }, (err) => {
-   if (err) {
-       throw err;
-   }
 
-   console.log(`${directory} is deleted!`);
-   res.json({status:true})
-})
-}
-})
+
+
 router.post('/changeUserPassword',verifyLogin,async(req,res)=>{
   console.log(req.body)
   userHelpers.changeUserPassword(req.body,req.session.user._id).then((response)=>{

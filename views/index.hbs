@@ -34,7 +34,7 @@
 								
 								<div class="row align-items-center">
 									<div class="col-lg-5 col-sm-5 col-5 col-md-6 pr-0">
-										<div class="banner-side-img"> <img src="/product-images/{{this.item}}/displayImage{{this.item}}.jpg" alt="Images"> </div>
+										<div class="banner-side-img"> <img src="data:image/jpeg;base64,{{this.product.img}}" alt="Images"> </div>
 									</div>
 									<div class="col-lg-7 col-sm-7 col-7 col-md-6">
 										<div class="banner-side-content">
@@ -82,7 +82,7 @@
 									₹{{#priceComma mostRatedProduct.price}}{{/priceComma}}</span> <button style="border: 0;" class="shopping-btn border-radius-5" onclick="addToCart('{{mostRatedProduct._id}}')">Add to cart</button> </div>
 						</div>
 						<div class="col-lg-6 col-6 col-sm-6">
-							<div class="page-inner-img"> <img src="/product-images/{{mostRatedProduct._id}}/displayImage{{mostRatedProduct._id}}.jpg" alt="Images"> </div>
+							<div class="page-inner-img"> <img src="data:image/jpeg;base64,{{mostRatedProduct.img}}" alt="Images"> </div>
 						</div>
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 									₹{{#priceComma mostPricedProduct.price}}{{/priceComma}}</span> <button style="border: 0;" class="shopping-btn border-radius-5" onclick="addToCart('{{mostPricedProduct._id}}')">Add to cart</button> </div>
 						</div>
 						<div class="col-lg-5 col-5 col-sm-5">
-							<div class="page-inner-img"> <img src="/product-images/{{mostPricedProduct._id}}/displayImage{{mostPricedProduct._id}}.jpg" alt="Images"> </div>
+							<div class="page-inner-img"> <img src="data:image/jpeg;base64,{{mostPricedProduct.img}}" alt="Images"> </div>
 						</div>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 			<div class="col-lg-3 col-sm-6">
 				
 				<div class="best-deal-card">
-					<div class="best-deal-img" > <a href="/single-product/{{this._id}}"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="{{this.name}}" > </a> <button id="bestDealWishlistButton{{this._id}}"  onclick="addToWishlist('{{this._id}}')"  style="border: none;"><i id="{{this._id}}" class="las la-heart"></i></button>  </div>
+					<div class="best-deal-img" > <a href="/single-product/{{this._id}}"> <img src="data:image/jpeg;base64,{{this.img}}" alt="{{this.name}}" > </a> <button id="bestDealWishlistButton{{this._id}}"  onclick="addToWishlist('{{this._id}}')"  style="border: none;"><i id="{{this._id}}" class="las la-heart"></i></button>  </div>
 					<div class="content">
 						<h3><a href="/single-product/{{this._id}}">{{this.name}}-{{this.color}}</a></h3>
 						<div class="rating-tag" > <div class="stars-outer"><div id="bestDeals{{this._id}}" style="width: {{this.totalRatingPercentage}}" class="stars-inner"></div></div> <span class="text-muted " style="margin-left: 1em;" id="bestDealRating{{this._id}}">{{#if this.totalRating}}({{this.totalRating}}){{else}}(0){{/if}}</span> </div>
@@ -196,7 +196,7 @@
 			{{#each activeOffers}}
 			<div class="col-lg-3 col-md-6">
 				<div class="flash-sale-card">
-					<div class="flash-sale-img"> <a href="/single-product/{{this.product._id}}"> <img src="/product-images/{{this.product._id}}/displayImage{{this.product._id}}.jpg" alt="Images"> </a>
+					<div class="flash-sale-img"> <a href="/single-product/{{this.product._id}}"> <img src="data:image/jpeg;base64,{{this.product.img}}" alt="Images"> </a>
 						<div class="flash-tag"> <b>{{this.discountedPercentage}}</b>Off </div>
 						<button id="flashDealWishlistButton{{this.product._id}}"  onclick="addToWishlist('{{this.product._id}}')"  style="border: none;"><i id="flashDeal{{this.product._id}}" class="las la-heart"></i></button>
 						<div id="timer">
@@ -230,7 +230,7 @@
 				<div class="product-banner-item product-banner-item-bg">
 					<div class="row align-items-center">
 						<div class="col-lg-6  col-sm-6">
-							<div class="product-banner-img"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images">
+							<div class="product-banner-img"> <img src="data:image/jpeg;base64,{{this.img}}" alt="Images">
 							{{#if this.discountedPercentage}}
 								<div class="product-banner-tag">
 									
@@ -278,7 +278,7 @@
 			<div class="col-lg-3 col-sm-6">
 				
 				<div class="best-deal-card">
-					<div class="best-deal-img" > <a href="/single-product/{{this._id}}"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="{{this.name}}" > </a> <button id="allProductWishlistButton{{this._id}}"  onclick="addToWishlist('{{this._id}}')"  style="border: none;"><i id="allProduct{{this._id}}" class="las la-heart"></i></button>  </div>
+					<div class="best-deal-img" > <a href="/single-product/{{this._id}}"> <img src="data:image/jpeg;base64,{{this.img}}" alt="{{this.name}}" > </a> <button id="allProductWishlistButton{{this._id}}"  onclick="addToWishlist('{{this._id}}')"  style="border: none;"><i id="allProduct{{this._id}}" class="las la-heart"></i></button>  </div>
 					<div class="content">
 						<h3><a href="/single-product/{{this._id}}">{{this.name}}-{{this.color}}</a></h3>
 						<div class="rating-tag " > <div class="stars-outer"><div id="allProducts{{this._id}}" style="width: {{this.totalRatingPercentage}};" class="stars-inner"></div></div> <span class="text-muted " style="margin-left: 1em;" id="allProductRating{{this._id}}">{{#if this.totalRating}}({{this.totalRating}}){{else}}(0){{/if}}</span> </div>
@@ -341,7 +341,7 @@
 					{{#each newProducts}}
 					<div class="col-lg-3 col-sm-6">
 						<div class="new-product-card">
-							<div class="new-product-img"> <a href="/single-product/{{this._id}}"> <img src="/product-images/{{this._id}}/displayImage{{this._id}}.jpg" alt="Images"> </a> </div>
+							<div class="new-product-img"> <a href="/single-product/{{this._id}}"> <img src="data:image/jpeg;base64,{{this.img}}" alt="Images"> </a> </div>
 							<div class="content">
 								<h3><a href="/single-product/{{this._id}}">{{this.name}}-{{this.color}}</a></h3>
 								<p>{{this.category}}</p>

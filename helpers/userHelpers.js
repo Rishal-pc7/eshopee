@@ -70,7 +70,34 @@ module.exports={
 
     },
     
-
+    addProfilePhoto:(userId,thumbImage,proPic)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION).updateOne({_id:objectId(userId)},
+            {
+                $set:{
+                    img:proPic,
+                    thumbImg:thumbImage
+                }
+            }
+            ).then((res)=>{
+                resolve(res)
+            })
+        })
+    },
+    removeProfilePhoto:(userId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION).updateOne({_id:objectId(userId)},
+            {
+                $set:{
+                    img:null,
+                    thumbImg:null
+                }
+            }
+            ).then((res)=>{
+                resolve(res)
+            })
+        })
+    },
 
     addToCart:(proId,userId)=>{
 

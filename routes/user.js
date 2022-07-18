@@ -156,7 +156,7 @@ router.post('/addReview',(req,res)=>{
   console.log(req.body);
   productHelpers.addReviews(req.body).then((response)=>{
     console.log(response);
-    res.json({status:true})
+    res.redirect('/single-product/'+req.body.proId)
 
   })
   
@@ -213,7 +213,7 @@ router.get('/signup',(req,res)=>{
     res.redirect('/')
   }else{
     res.render('user/signup',{loginPage:true,signupErr:req.session.signupErr})
-
+    req.session.signupErr=false
   }
   
 })

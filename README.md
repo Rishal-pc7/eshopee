@@ -8,9 +8,9 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/Muhammed-Rahif/Piptes)
-[![GitHub Issues](https://img.shields.io/github/issues/Muhammed-Rahif/Piptes.svg)](https://github.com/Muhammed-Rahif/Piptes/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Muhammed-Rahif/Piptes.svg)](https://github.com/Muhammed-Rahif/Piptes/pulls)
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/Rishal-pc7/eshopee-cart)
+[![GitHub Issues](https://img.shields.io/github/issues/Rishal-pc7/eshopee-cart.svg)](https://github.com/Rishal-pc7/eshopee-cart/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Rishal-pc7/eshopee-cart.svg)](https://github.com/Rishal-pc7/eshopee-cart/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
  
 </div>
@@ -21,6 +21,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#Screenshots">Screenshots</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -45,7 +46,7 @@
 
 
 ## 💻️ Screenshots
-<div align="center">
+<div align="center" id='Screenshots'>
   <img width="49.5%" src="/screenshots/eshopee1.jpg" alt="Shot 1">
   <img width="49.5%" src="/screenshots/eshopee2.jpg" alt="Shot 2">
   <img width="49.5%" src="/screenshots/eshopee3.jpg" alt="Shot 3">

@@ -474,7 +474,7 @@ Edit
 </form>
 {{else}}
 <h3>Add Your Review</h3>
-<form id="reviewForm" action="/addReview"  >
+<form id="reviewForm" action="/addReview" method="post" >
 
 <div class="row">
     <div class="col-md-3">
@@ -743,47 +743,10 @@ Send
 
 	</script>
 	<!--Include JQuery Library -->
-	<script src=
-"https://code.jquery.com/jquery-3.5.0.js">
-	</script>
-	<script>
 	
-	// When DOM is loaded this
-	// function will get executed
-	$(() => {
-		// function will get executed
-		// on click of submit button
-		$("#submitButton").click(function(ev) {
-			var form = $("#reviewForm");
-			var url = form.attr('action');
-			$.ajax({
-				type: "POST",
-				url: url,
-				data: form.serialize(),
-				success: function(data) {
-					if(data.status){
-					// Ajax call completed successfully
-					
-                    location.reload()
-                    }
-				},
-				error: function(data) {
-					
-					// Some error in ajax call
-					alert("some Error");
-				}
-			});
-		});
-	});
-  
-	</script>
   
 
-  <script>
-   
-    
-    
-  </script>
+  
 
 
 

@@ -250,7 +250,7 @@ router.post('/login',(req,res)=>{
     if(response.status){
       
       req.session.user=response.user
-      console.log("🚀 ~ file: user.js ~ line 253 ~ userHelpers.doLogin ~ response.user", response.user)
+      
       req.session.user.loggedIn=true
       if(req.body.query){
         res.redirect(req.body.query)
@@ -292,58 +292,6 @@ router.get('/profile',verifyLogin,async (req,res)=>{
   
   res.render('user/profile',{user,profilePage:true,products,productJson:JSON.stringify(null),count,wishlistCount})
 })
-router.post('/addProfilePhoto',verifyLogin,async(req,res)=>{
-  let user=req.session.user
-  if(req.files){
-    let proPic=req.files.proPic
-    req.session.userImg=false
-    
-    if(req.files.proPic){
-      req.session.userImg=true
-      if (fs.existsSync('./public/user-images/'+req.body.userId)) {
-        
-    }else{
-      fs.mkdirSync('./public/user-images/'+req.body.userId)
-    }
-      proPic.mv('./public/user-images/'+req.body.userId+'/'+req.body.userId+'.jpg').then(async()=>{
-        const image = await resizeImg(fs.readFileSync('./public/user-images/'+req.body.userId+'/'+req.body.userId+'.jpg'), {
-          width: 80,
-          height: 80
-      });
-      const thumbImage = await resizeImg(fs.readFileSync('./public/user-images/'+req.body.userId+'/'+req.body.userId+'.jpg'), {
-        width: 40,
-        height: 40
-    });
-      fs.writeFileSync('./public/user-images/'+req.body.userId+'/'+req.body.userId+'.jpg', image)
-      fs.writeFileSync('./public/user-images/'+req.body.userId+'/thumbImage'+req.body.userId+'.jpg', thumbImage)
-      let thumbImageDB=fs.readFileSync('./public/user-images/'+req.body.userId+'/thumbImage'+req.body.userId+'.jpg', 'base64');
-      let proPicDB=fs.readFileSync('./public/user-images/'+req.body.userId+'/'+req.body.userId+'.jpg', 'base64');
-      userHelpers.addProfilePhoto(user._id,thumbImageDB,proPicDB).then((response)=>{
-        req.session.user.img=proPicDB
-        req.session.user.thumbImg=thumbImageDB
-        res.redirect('/profile')
-
-      })
-        
-      
-      
-      })
-      
-      
-    }
-  }
-})
-router.post('/removeProfilePhoto',verifyLogin,(req,res)=>{
-  console.log(req.body)
-  let user=req.session.user
-  userHelpers.removeProfilePhoto(user._id).then((response)=>{
-    req.session.user.img=null
-    req.session.user.thumbImg=null
-    res.json({status:true})
-  })
-   
-
- });
 
 
 

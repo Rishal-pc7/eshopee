@@ -292,10 +292,6 @@ router.get('/profile',verifyLogin,async (req,res)=>{
   
   res.render('user/profile',{user,profilePage:true,products,productJson:JSON.stringify(null),count,wishlistCount})
 })
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
 
 

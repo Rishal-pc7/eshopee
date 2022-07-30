@@ -42,8 +42,8 @@
 
 {{#if user}}
 
-<a href="/profile" id="profile-image" title="Profile" style="display: none;" >{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</a>
-<a href="/profile"  id="avatarImgMob" ><img id="userImgMob" class="avatar2" style="margin-left: 0;" src="data:image/jpeg;base64,{{user.thumbImg}}" alt=""></a>
+<a href="/profile" id="profile-image" title="Profile"  >{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</a>
+
 {{else}}
 <a class="item las la-user-plus" title="login" href="/login"></a>
 {{/if}}
@@ -104,14 +104,14 @@
 							
 							
 							
-								 <li  class="avatar " id="avatar" style="display: none;" title="Profile"  ><a href="/profile" id="avatar_letters">{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</a></li>
+								 <li  class="avatar " id="avatar"  title="Profile"  ><a href="/profile" id="avatar_letters">{{#returnOnlyZeroindex user.name}}{{/returnOnlyZeroindex}}</a></li>
 								 
 
 
 
 								 {{/if}}
 						</ul>
-						<a href="/profile"  id="avatarImg" ><img id="userImg" class="avatar2" src="data:image/jpeg;base64,{{user.thumbImg}}" alt=""></a>
+						
 					</div>
 				</div>
 			</nav>
@@ -204,20 +204,7 @@
 	 }else{
 
 	 
-	  $('#userImg').on('error',()=>{
-		
-        document.getElementById('avatarImg').style.display='none'
-        document.getElementById('avatar').style.display='block'
-        
-        
-        }) 
-		$('#userImgMob').on('error',()=>{
-		 
-        document.getElementById('avatarImgMob').style.display='none'
-        document.getElementById('profile-image').style.display='block'
-        
-        
-        }) 
+	  
 		
         
 		 let arr=[]

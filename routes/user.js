@@ -250,7 +250,7 @@ router.post('/login',(req,res)=>{
     if(response.status){
       
       req.session.user=response.user
-      console.log("🚀 ~ file: user.js ~ line 253 ~ userHelpers.doLogin ~ response.user", response.user)
+      
       req.session.user.loggedIn=true
       if(req.body.query){
         res.redirect(req.body.query)
@@ -292,7 +292,10 @@ router.get('/profile',verifyLogin,async (req,res)=>{
   
   res.render('user/profile',{user,profilePage:true,products,productJson:JSON.stringify(null),count,wishlistCount})
 })
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 
 

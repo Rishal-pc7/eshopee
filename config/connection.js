@@ -5,7 +5,7 @@ const mongoClient=require('mongodb').MongoClient
 
 module.exports.connect=function (done){
 
-    const url= process.env.MONGODB_URI || 'mongodb://localhost/ustora'
+    const url= "mongodb+srv://Rishal:806992@cluster0.ga6j7.mongodb.net/?retryWrites=true&w=majority" || 'mongodb://localhost/ustora'
     const dbname="ustora"
 
     mongoClient.connect(url,(err,data)=>{
